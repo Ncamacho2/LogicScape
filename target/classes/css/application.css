@@ -1,0 +1,11 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.my-button{
+	-fx-border-color: #000000;
+    -fx-border-width: 10px;
+    -fx-border-radius: 30.0px;
+    -fx-text-fill: black;
+    -fx-font-family: "Press Start 2P", sans-serif;
+	-fx-background-color: #00CB6D;
+    -fx-background-radius: 30px;
+    -fx-font-size: 40px;
+}
