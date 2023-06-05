@@ -18,11 +18,7 @@
 			<artifactId>javafx-media</artifactId>
 			<version>20</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.sql</groupId>
-			<artifactId>javax.sql-api</artifactId>
-			<version>1.4.0</version>
-		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
