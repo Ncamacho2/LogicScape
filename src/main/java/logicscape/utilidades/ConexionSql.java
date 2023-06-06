@@ -11,9 +11,9 @@ import java.util.List;
 import logicscape.mapper.EntityMapper;
 
 public class ConexionSql<T> {
-    private static final String URL = "jdbc:mysql://localhost:3306/database_name";
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
+    private static final String URL = "jdbc:mysql://localhost:3306/logic_scape_db";
+    private static final String USERNAME = "logicscape";
+    private static final String PASSWORD = "Pplogicscape2023*.";
 
     private Connection connection;
 
