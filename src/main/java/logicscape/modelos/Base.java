@@ -1,6 +1,9 @@
 package logicscape.modelos;
 
+import java.lang.reflect.Field;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -99,4 +102,35 @@ public class Base {
 		this.fechaCreacion = fechaCreacion;
 	}
 
+	public List<String> getColumnas() {
+        List<String> columnas = new ArrayList<>();
+        Class<?> claseActual = this.getClass();
+        while (claseActual != null) {
+            Field[] fields = claseActual.getDeclaredFields();
+            for (Field field : fields) {
+                columnas.add(field.getName());
+            }
+            claseActual = claseActual.getSuperclass();
+        }
+        return columnas;
+    }
+
+    public List<Object> getValores() {
+        List<Object> valores = new ArrayList<>();
+        Class<?> claseActual = this.getClass();
+        while (claseActual != null) {
+            Field[] fields = claseActual.getDeclaredFields();
+            for (Field field : fields) {
+                try {
+                    field.setAccessible(true);
+                    Object valor = field.get(this);
+                    valores.add(valor);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            claseActual = claseActual.getSuperclass();
+        }
+        return valores;
+    }
 }

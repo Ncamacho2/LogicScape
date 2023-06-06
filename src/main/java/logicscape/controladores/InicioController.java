@@ -1,5 +1,6 @@
 package logicscape.controladores;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javafx.scene.control.Alert;
@@ -18,11 +19,24 @@ public class InicioController {
     }
 	public void handleButtonClick(String string) {
 		ConexionSql<Usuario> conexion = new ConexionSql<>();
-
-        // Ejemplo de consulta de todos los usuarios
+		
+		// Ejemplo de insert de usuarios
+		Usuario usuario = new Usuario();
+		usuario.setVisible(true);
+		usuario.setDisponible(true);
+		usuario.setUltimaActualizacion(LocalDateTime.now());
+		usuario.setFechaCreacion(LocalDateTime.now());
+		usuario.setUsuario("usuarioPr");
+		usuario.setPassword("pss");
+		usuario.setUltimoIngreso(LocalDateTime.now());
+		usuario.setEscenarioActual(0);
+		usuario.setNivelActual(0);		
+		conexion.insert("usuarios", usuario.getColumnas(), usuario.getValores());
+        
+		// Ejemplo de consulta de todos los usuarios
         List<Usuario> usuarios = conexion.findAll("usuarios", new UsuarioMapper());
-        for (Usuario usuario : usuarios) {
-            System.out.println(usuario.getUsuario());
+        for (Usuario usuarioA : usuarios) {
+            System.out.println(usuarioA.getUsuario());
         }
 		Alert alert = new Alert(AlertType.INFORMATION);
 	    alert.setTitle("Ventana emergente");
