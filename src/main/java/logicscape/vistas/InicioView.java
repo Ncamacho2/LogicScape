@@ -44,7 +44,7 @@ public class InicioView extends Application {
 
 		inicioBtn = new Button("Ingresa");
 		registroBtn = new Button("Registro");
-
+ 
 		// Agregar clases CSS a los botones
 		inicioBtn.getStyleClass().add("my-button");
 		registroBtn.getStyleClass().add("my-button");
