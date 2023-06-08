@@ -26,8 +26,8 @@ public class InicioController {
 		usuario.setDisponible(true);
 		usuario.setUltimaActualizacion(LocalDateTime.now());
 		usuario.setFechaCreacion(LocalDateTime.now());
-		usuario.setUsuario("usuarioPr");
-		usuario.setPassword("pss");
+		usuario.setUsuario("PEPITO");
+		usuario.setPassword("hgjhgkhlkhjlkj");
 		usuario.setUltimoIngreso(LocalDateTime.now());
 		usuario.setEscenarioActual(0);
 		usuario.setNivelActual(0);		
