@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import logicscape.controladores.InfoController;
 import logicscape.controladores.InicioController;
 import logicscape.controladores.JugarController;
 import logicscape.controladores.LoginController;
@@ -29,7 +30,6 @@ public class JugarView extends Application {
     private Button jugarBtn;
     private Button salirBtn;
     private Button infoBtn;
-    private Button registroBtn;
     private JugarController jugarController;
 
 
@@ -58,13 +58,13 @@ public class JugarView extends Application {
         jugarBtn = new Button("JUGAR");
         salirBtn = new Button("SALIR");
         infoBtn = new Button("Info");
-        registroBtn = new Button("Registro");
+  
 
         // Agregar clases CSS a los botones
         jugarBtn.getStyleClass().add("my-button3");
         salirBtn.getStyleClass().add("my-button2");
         infoBtn.getStyleClass().add("my-button2");
-        registroBtn.getStyleClass().add("my-button2");
+
 
         jugarBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         jugarBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(1.5));
@@ -73,14 +73,13 @@ public class JugarView extends Application {
         infoBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         infoBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
         
-        //Codigo documentado para luego enlazar las otras ventanas 
-        /*jugarBtn.setOnAction(event -> {
-            LoginView loginView = new LoginView();
-            LoginController loginController = new LoginController(loginView);
-            loginView.start(primaryStage);
+ 
+        infoBtn.setOnAction(event -> {
+            InfoView infoView = new InfoView();
+            InfoController infoController = new InfoController(infoView);
+            infoView.start(primaryStage);
         });
-        registroBtn.setOnAction(event -> jugarController.handleButtonClick("registro"));*/
-        
+        //Boton de salida
         salirBtn.setOnAction(event -> {
         	System.exit(0);
         });
@@ -103,7 +102,7 @@ public class JugarView extends Application {
     /**
      * @param jugarController the jugarController to set
      */
-    public void setLoginController(JugarController jugarController) {
+    public void setJugarController(JugarController jugarController) {
         this.jugarController = jugarController;
     }
 
@@ -111,8 +110,5 @@ public class JugarView extends Application {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-	public void setJugarController(JugarController jugarController2) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }
