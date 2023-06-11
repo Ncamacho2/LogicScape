@@ -14,6 +14,7 @@ public class RegistroController {
     }
 
     public void handleButtonClick(String action) {
+  
     	
     }
 

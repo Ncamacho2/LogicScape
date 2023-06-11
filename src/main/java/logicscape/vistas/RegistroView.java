@@ -30,7 +30,6 @@ public class RegistroView extends Application {
     private PasswordField passwordField;
     private PasswordField validarPassField;
 
-
     @Override
     public void start(Stage primaryStage) {
         // Configuración de la ventana principal

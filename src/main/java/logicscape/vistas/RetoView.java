@@ -35,8 +35,6 @@ public class RetoView extends Application{
     private TextField respuesta3Field;
     private TextField respuesta4Field;
 
-
-
     @Override
     public void start(Stage primaryStage) {
         // Configuración de la ventana principal
