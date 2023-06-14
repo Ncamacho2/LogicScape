@@ -8,12 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.InicioController;
@@ -62,6 +65,14 @@ public class LoginView extends Application {
         usuarioLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 16));
         contraseniaLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 16));
 
+        // Agregar estilo CSS personalizado a las etiquetas
+        usuarioLabel.setStyle("-fx-background-color: black; -fx-background-radius: 5;");
+        contraseniaLabel.setStyle("-fx-background-color: black; -fx-background-radius: 5;");
+        
+        usuarioLabel.setPadding(new Insets(10));
+        contraseniaLabel.setPadding(new Insets(10));
+
+
         inputContainer.add(usuarioLabel, 0, 0);
         inputContainer.add(usuarioField, 1, 0);
         inputContainer.add(contraseniaLabel, 0, 1);
@@ -90,10 +101,13 @@ public class LoginView extends Application {
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, loginBtn);
 
-        // Establecer el color de fondo en morado para inputContainer
-        BackgroundFill backgroundFill = new BackgroundFill(Color.INDIGO, null, null);
-        Background background = new Background(backgroundFill);
-        inputContainer.setBackground(background);
+        // Creación del ImageView para la imagen de fondo
+        Image backgroundImage = new Image("file:src/main/resources/img/nivel_final.png");
+        ImageView backgroundImageView = new ImageView(backgroundImage);
+        backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
+        backgroundImageView.fitHeightProperty()
+                .bind(primaryStage.heightProperty().subtract(buttonContainer.heightProperty()));
+        root.getChildren().add(backgroundImageView);
 
         // Agregar los contenedores al contenedor principal
         root.setCenter(inputContainer);
