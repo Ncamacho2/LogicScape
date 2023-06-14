@@ -73,12 +73,20 @@ public class JugarView extends Application {
         infoBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         infoBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
         
- 
+        jugarBtn.setOnAction(event -> {
+            NivelView nivelView = new NivelView();
+            logicscape.controladores.NivelController nivelController = new logicscape.controladores.NivelController(nivelView);
+            nivelView.start(primaryStage);
+        });
+        
+        
         infoBtn.setOnAction(event -> {
             InfoView infoView = new InfoView();
             InfoController infoController = new InfoController(infoView);
             infoView.start(primaryStage);
         });
+        
+        
         //Boton de salida
         salirBtn.setOnAction(event -> {
         	System.exit(0);

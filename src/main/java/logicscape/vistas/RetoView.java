@@ -132,7 +132,7 @@ public class RetoView extends Application{
         primaryStage.show();
     }
 	/**
-	 * @param inicioController the inicioController to set
+	 * @param retoController the retoController to set
 	 */
 	public void setRetoController(RetoController retoController) {
 		this.retoController = retoController;

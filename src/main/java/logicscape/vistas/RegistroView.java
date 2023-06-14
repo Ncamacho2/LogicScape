@@ -117,10 +117,16 @@ public class RegistroView extends Application {
         loginBtn.setOnAction(event -> {
 
         });
-        inicioBtn.setOnAction(event -> {
+        loginBtn.setOnAction(event -> {
             InicioView inicioView = new InicioView();
             InicioController inicioControler = new InicioController(inicioView);
             inicioView.start(primaryStage);
+        });
+        
+        inicioBtn.setOnAction(event -> {
+           LoginView loginView = new LoginView();
+           logicscape.controladores.LoginController loginControler = new logicscape.controladores.LoginController(loginView);
+           loginView.start(primaryStage);
         });
 
         // Agregar los botones al contenedor
@@ -151,12 +157,11 @@ public class RegistroView extends Application {
     }
 	
 	/**
-	 * @param inicioController the inicioController to set
+	 * @param registroController the registroController to set
 	 */
 	public void setRegistroController(RegistroController registroController) {
 		this.registroController = registroController;
 	}
-
 
 	void setStage(Stage primaryStage) {
 		throw new UnsupportedOperationException("Not supported yet.");

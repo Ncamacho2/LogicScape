@@ -97,6 +97,13 @@ public class LoginView extends Application {
             InicioController inicioControler = new InicioController(inicioView);
             inicioView.start(primaryStage);
         });
+        
+        loginBtn.setOnAction(event -> {
+            JugarView jugarView = new JugarView();
+            logicscape.controladores.JugarController jugarControler = new logicscape.controladores.JugarController(jugarView);
+            jugarView.start(primaryStage);
+        });
+
 
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, loginBtn);

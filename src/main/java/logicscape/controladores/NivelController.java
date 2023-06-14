@@ -5,14 +5,14 @@ import javafx.scene.control.Alert.AlertType;
 import logicscape.mapper.UsuarioMapper;
 import logicscape.modelos.Usuario;
 import logicscape.utilidades.ConexionSql;
-import logicscape.vistas.RegistroView;
+import logicscape.vistas.NivelView;
 
-public class RegistroController {
-    private RegistroView registroView;
+public class NivelController {
+    private NivelView nivelView;
 
-    public RegistroController(RegistroView registroView) {
-        this.registroView = registroView;
-        this.registroView.setRegistroController(this);
+    public NivelController(NivelView nivelView) {
+        this.nivelView = nivelView;
+        this.nivelView.setNivelController(this);
     }
 
     public void handleButtonClick(String action) {

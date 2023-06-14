@@ -60,8 +60,13 @@ public class InicioView extends Application {
             LoginController loginController = new LoginController(loginView);
             loginView.start(primaryStage);
         });
-        registroBtn.setOnAction(event -> inicioController.handleButtonClick("registro"));
-
+        
+        
+       registroBtn.setOnAction(event -> {
+            RegistroView registroView = new RegistroView();
+            logicscape.controladores.RegistroController registroController = new logicscape.controladores.RegistroController(registroView);
+            registroView.start(primaryStage);
+        });
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, registroBtn);
 
