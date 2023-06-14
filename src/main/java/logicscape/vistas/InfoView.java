@@ -39,6 +39,7 @@ public class InfoView extends Application {
         primaryStage.setHeight(HEIGHT);
         // Creación del contenedor principal
         BorderPane root = new BorderPane();
+        
         // Creación del contenedor para los botones en la parte inferior
         HBox buttonContainer = new HBox();
         buttonContainer.setPadding(new Insets(20));
@@ -53,6 +54,13 @@ public class InfoView extends Application {
         backgroundImageView.fitHeightProperty()
                 .bind(primaryStage.heightProperty().subtract(buttonContainer.heightProperty()));
         root.getChildren().add(backgroundImageView);
+        
+        // Creacion de ventana info
+        HBox textboxContainer = new HBox();
+        textboxContainer.setPadding(new Insets(20));
+        textboxContainer.setSpacing(50);
+        textboxContainer.setPrefHeight(HEIGHTBUTTON);
+        textboxContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
 
         backBtn = new Button("Volver");
 
