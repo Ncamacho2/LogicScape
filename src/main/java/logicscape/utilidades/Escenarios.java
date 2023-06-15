@@ -184,7 +184,7 @@ public class Escenarios {
 	 */
 	private Integer generaAleatorioPorNivel(Integer idNivel) {
 		Random random = new Random();
-		Integer limite = (int) Math.pow(random.nextInt(10), idNivel + 1);
+		Integer limite = (int) Math.pow(10, idNivel + 1);
 		return random.nextInt(limite);
 	}
 
