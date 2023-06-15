@@ -5,6 +5,8 @@
 
 ![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/b97eda3d-25ef-479a-b7a2-edeb4c74b676)
 
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/6dfddd3d-7171-42c7-9d3f-7b4d43a16b62)
+
 
 
 # LogicScape Casos de uso
