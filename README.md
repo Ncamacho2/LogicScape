@@ -3,9 +3,8 @@
 
 # LogicScape Diagrama de clases
 
-![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/066cb25d-f1f9-440e-a396-c8f510f04610)
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/b97eda3d-25ef-479a-b7a2-edeb4c74b676)
 
-![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/6487f589-a1bc-4f1c-acc7-5fa6439cb03e)
 
 
 # LogicScape Casos de uso
