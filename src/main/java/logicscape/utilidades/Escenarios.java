@@ -157,16 +157,16 @@ public class Escenarios {
 		Integer numB = generaAleatorioPorNivel(getNivelId());
 
 		if (getEscenarioId() == 0) {
-			setPregunta(numA + " + " + numB);
+			setPregunta(numA + " + " + numB + "= ?" );
 			setResultado(numA + numB);
 		} else if (getEscenarioId() == 1) {
-			setPregunta(numA + " - " + numB);
+			setPregunta(numA + " - " + numB + "= ?");
 			setResultado(numA - numB);
 		} else if (getEscenarioId() == 2) {
-			setPregunta(numA + " * " + numB);
+			setPregunta(numA + " * " + numB + "= ?");
 			setResultado(numA * numB);
 		} else if (getEscenarioId() == 3) {
-			setPregunta(numA + " / " + numB);
+			setPregunta(numA + " / " + numB + "= ?");
 			setResultado(numA / numB);
 		}
 		opciones.add(getResultado());
