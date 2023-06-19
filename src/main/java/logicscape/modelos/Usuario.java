@@ -48,7 +48,8 @@ public class Usuario extends Base {
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
-		this.password = EncriptarPassword.encriptarPassword(password);
+		//this.password = EncriptarPassword.encriptarPassword(password);
+		this.password = password;
 	}
 
 	/**

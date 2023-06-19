@@ -127,7 +127,7 @@ public class ConexionSql<T> {
 		T entity = null;
 
 		try {
-			String query = "SELECT * FROM Usuarios WHERE usuario = ?";
+			String query = "SELECT * FROM usuarios WHERE usuario = ?";
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setNString(1, usuario);
 			ResultSet resultSet = statement.executeQuery();
