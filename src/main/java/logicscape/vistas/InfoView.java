@@ -2,24 +2,35 @@ package logicscape.vistas;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import logicscape.controladores.InfoController;
 import logicscape.controladores.InicioController;
+import logicscape.controladores.JugarController;
 import logicscape.controladores.LoginController;
 
-public class InicioView extends Application {
-    private static final int WIDTH = 1024;
+public class InfoView extends Application {
+	private static final int WIDTH = 1024;
     private static final int HEIGHT = 628;
     private static final int HEIGHTBUTTON = 100;
-    private Button inicioBtn;
-    private Button registroBtn;
-    private InicioController inicioController;
+    private Button backBtn;
+    private InfoController infoController;
+
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -43,27 +54,28 @@ public class InicioView extends Application {
                 .bind(primaryStage.heightProperty().subtract(buttonContainer.heightProperty()));
         root.getChildren().add(backgroundImageView);
 
-        inicioBtn = new Button("Ingresa");
-        registroBtn = new Button("Registro");
+        backBtn = new Button("Volver");
+
 
         // Agregar clases CSS a los botones
-        inicioBtn.getStyleClass().add("my-button");
-        registroBtn.getStyleClass().add("my-button");
+        backBtn.getStyleClass().add("my-button");
 
-        inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
-        inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
-        registroBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
-        registroBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
+        backBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
+        backBtn.prefWidthProperty().bind(primaryStage.widthProperty());
+
         
-        inicioBtn.setOnAction(event -> {
-            LoginView loginView = new LoginView();
-            LoginController loginController = new LoginController(loginView);
-            loginView.start(primaryStage);
+        //Accion boton volver
+        backBtn.setOnAction(event -> {
+            JugarView jugarView = new JugarView();
+            JugarController jugarController = new JugarController(jugarView);
+            jugarView.start(primaryStage);
         });
-        registroBtn.setOnAction(event -> inicioController.handleButtonClick("registro"));
+
+        
+
 
         // Agregar los botones al contenedor
-        buttonContainer.getChildren().addAll(inicioBtn, registroBtn);
+        buttonContainer.getChildren().addAll(backBtn);
 
         // Agregar el contenedor de botones al contenedor principal
         root.setBottom(buttonContainer);
@@ -78,13 +90,15 @@ public class InicioView extends Application {
     }
 
     /**
-     * @param inicioController the inicioController to set
+     * @param infoController the infoController to set
      */
-    public void setInicioController(InicioController inicioController) {
-        this.inicioController = inicioController;
+    public void setInfoController(InfoController infoController) {
+        this.infoController = infoController;
     }
 
-    void setStage(Stage primaryStage) {
+    void setStage(Stage primaryStag) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+
 }

@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import logicscape.utilidades.EncriptarPassword;
+
 /**
  * @author ncamacho.
  *
@@ -46,7 +48,7 @@ public class Usuario extends Base {
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = EncriptarPassword.encriptarPassword(password);
 	}
 
 	/**
@@ -90,5 +92,5 @@ public class Usuario extends Base {
 	public void setNivelActual(Integer nivelActual) {
 		NivelActual = nivelActual;
 	}
-
+	
 }

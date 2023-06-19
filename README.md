@@ -1,2 +1,18 @@
 # LogicScape
-![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/385bc919-24a6-4beb-9193-6bb980362e0e)
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/00d8ab9f-51dd-4dba-990b-633a3034b0a0)
+
+# LogicScape Diagrama de clases
+
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/b97eda3d-25ef-479a-b7a2-edeb4c74b676)
+
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/6dfddd3d-7171-42c7-9d3f-7b4d43a16b62)
+
+
+
+# LogicScape Casos de uso
+
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/5981b0d1-dcd8-4434-8abe-3abd9a3b9e9b)
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/d8ab805d-4d53-4e13-94b5-f8c02e97fb38)
+
+
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/73409236-06dc-4d50-b2df-abf86d52e598)
