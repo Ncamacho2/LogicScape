@@ -16,7 +16,7 @@ public class UsuarioMapper implements EntityMapper<Usuario> {
 		usuario.setUltimaActualizacion(resultSet.getTimestamp("ultimaActualizacion").toLocalDateTime());
 		usuario.setFechaCreacion(resultSet.getTimestamp("fechaCreacion").toLocalDateTime());
 		usuario.setUsuario(resultSet.getString("usuario"));
-		usuario.setPassword(resultSet.getString("password"));
+		usuario.setPasswordSe(resultSet.getString("password"));
 		usuario.setUltimoIngreso(resultSet.getTimestamp("ultimoIngreso").toLocalDateTime());
 		usuario.setEscenarioActual(resultSet.getInt("EscenarioActual"));
 		usuario.setNivelActual(resultSet.getInt("NivelActual"));

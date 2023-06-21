@@ -1,6 +1,7 @@
 package logicscape.vistas;
 
 import javafx.application.Application;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,13 +11,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.InicioController;
@@ -90,7 +88,11 @@ public class LoginView extends Application {
         inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
         loginBtn.setOnAction(event -> {
-
+        	boolean logged = loginController.handleLogin(usuarioField.getText(), contraseniaField.getText());
+        	if(logged) {
+        		JugarView jugarView = new JugarView();
+        		jugarView.start(primaryStage);
+        	}
         });
         inicioBtn.setOnAction(event -> {
             InicioView inicioView = new InicioView();
@@ -131,12 +133,19 @@ public class LoginView extends Application {
     }
 
     /**
-     * @param loginController the loginController to set
+     * Establece el controlador de inicio de sesión para esta vista.
+     *
+     * @param loginController El controlador de inicio de sesión.
      */
     public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
     }
 
+    /**
+     * Establece el stage de la vista.
+     *
+     * @param primaryStage El stage principal.
+     */
     void setStage(Stage primaryStage) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
