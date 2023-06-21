@@ -9,16 +9,29 @@ public class RegistroController {
 	
     private RegistroView registroView;
 
+    /**
+     * Constructor de la clase RegistroController.
+     *
+     * @param registroView La vista del registro.
+     */
     public RegistroController(RegistroView registroView) {
         this.registroView = registroView;
         this.registroView.setRegistroController(this);
     }
 
-    public void handleButtonClick(String action) {
-  
-    	
+    /**
+     * Maneja el evento de clic en un botón.
+     *
+     * @param action Acción realizada al hacer clic.
+     */
+    public void handleButtonClick(String action) {   	
     }
 
+    /**
+     * Muestra un mensaje de información en una ventana emergente.
+     *
+     * @param mensaje El mensaje a mostrar.
+     */
     private void mostrarMensaje(String mensaje) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Ventana emergente");
@@ -28,18 +41,18 @@ public class RegistroController {
     }
     
     /**
-     * Maneja el evento de inicio de sesión.
+     * Maneja el evento de registro de un usuario.
      *
-     * @param usuario     El nombre de usuario.
-     * @param contrasenia La contraseña.
-     * @return true si el inicio de sesión es exitoso, false de lo contrario.
+     * @param user     El nombre de usuario.
+     * @param password La contraseña.
+     * @return true si el registro es exitoso, false de lo contrario.
      */
     public boolean handleRegistro(String user, String password) {
         Autenticacion autenticacion = new Autenticacion();
         if (autenticacion.registrarUsuario(user, password)) {
             return true;
         } else {
-            mostrarMensaje("Error al registrar usuario");
+            mostrarMensaje("Registro Fallido");
             return false;
         }
     }
