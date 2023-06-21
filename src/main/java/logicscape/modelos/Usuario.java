@@ -50,6 +50,13 @@ public class Usuario extends Base {
 	public void setPassword(String password) {
 		this.password = EncriptarPassword.encriptarPassword(password);
 	}
+	
+	/**
+	 * @param password the password to set
+	 */
+	public void setPasswordSe(String password) {
+		this.password = password;
+	}
 
 	/**
 	 * @return the ultimoIngreso
