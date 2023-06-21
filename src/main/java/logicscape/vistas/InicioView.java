@@ -82,6 +82,8 @@ public class InicioView extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    
+  
 
     /**
      * @param inicioController the inicioController to set
