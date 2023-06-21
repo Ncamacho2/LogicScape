@@ -23,12 +23,9 @@ public class RegistroView extends Application {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 628;
     private static final int HEIGHTBUTTON = 100;
-    private Button loginBtn;
-    private Button inicioBtn;
+    private Button aceptarBtn;
+    private Button cancelarBtn;
     private RegistroController registroController;
-    private TextField nombreField;
-    private TextField apellidoField;
-    private TextField edadField;
     private TextField userField;
     private PasswordField passwordField;
     private PasswordField validarPassField;
@@ -54,41 +51,18 @@ public class RegistroView extends Application {
         inputContainer.setVgap(20);
         inputContainer.setAlignment(Pos.CENTER_LEFT);
 
-        nombreField = new TextField();
-        apellidoField = new TextField();
-        edadField = new TextField();
         userField = new TextField();
         passwordField = new PasswordField();
         validarPassField = new PasswordField();
    
-
-        Label nombreLabel = new Label("Nombre:");
-        Label apellidoLabel = new Label("Apellido:");
-        Label edadLabel = new Label("Edad:");
-        Label userLabel = new Label("Ususario:");
-        Label passwordLabel = new Label("Nueva Contraseña:");
-        Label validarPassLabel = new Label("Validar Contraseña:");
-      
-
-        nombreLabel.getStyleClass().add("my-label");
-        apellidoLabel.getStyleClass().add("my-label");
-        edadLabel.getStyleClass().add("my-label");
+        Label userLabel = new Label(" Ususario:");
+        Label passwordLabel = new Label(" Nueva Contraseña:");
+        Label validarPassLabel = new Label(" Validar Contraseña:");
+    
         userLabel.getStyleClass().add("my-label");
         passwordLabel.getStyleClass().add("my-label");
         validarPassLabel.getStyleClass().add("my-label");
         
-        inputContainer.add(nombreLabel, 0,0);
-        nombreLabel.getStyleClass().add("my-registro");
-        inputContainer.add(nombreField, 1, 0);
-        nombreField.getStyleClass().add("my-registro");
-        inputContainer.add(apellidoLabel, 0, 1);
-        apellidoLabel.getStyleClass().add("my-registro");
-        inputContainer.add(apellidoField, 1, 1);
-        apellidoField.getStyleClass().add("my-registro");
-        inputContainer.add(edadLabel, 0, 2);
-        edadLabel.getStyleClass().add("my-registro");
-        inputContainer.add(edadField, 1, 2);
-        edadField.getStyleClass().add("my-registro");
         inputContainer.add(userLabel, 0,3);
         userLabel.getStyleClass().add("my-registro");
         inputContainer.add(userField, 1, 3);
@@ -103,28 +77,35 @@ public class RegistroView extends Application {
         validarPassField.getStyleClass().add("my-registro");     
         
 
-        inicioBtn = new Button("Aceptar");
-        loginBtn = new Button("Cancelar");
+        aceptarBtn = new Button("Aceptar");
+        cancelarBtn = new Button("Cancelar");
 
         // Agregar clases CSS a los botones
-        loginBtn.getStyleClass().add("my-button");
-        inicioBtn.getStyleClass().add("my-button");
+        cancelarBtn.getStyleClass().add("my-button");
+        aceptarBtn.getStyleClass().add("my-button");
 
-        loginBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
-        loginBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
-        inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
-        inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
-        loginBtn.setOnAction(event -> {
+        cancelarBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
+        cancelarBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
+        aceptarBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
+        aceptarBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
+        cancelarBtn.setOnAction(event -> {
 
         });
-        inicioBtn.setOnAction(event -> {
+        aceptarBtn.setOnAction(event -> {
+            InicioView inicioView = new InicioView();
+            InicioController inicioControler = new InicioController(inicioView);
+            inicioView.start(primaryStage);
+        });
+        cancelarBtn.setOnAction(event -> {
             InicioView inicioView = new InicioView();
             InicioController inicioControler = new InicioController(inicioView);
             inicioView.start(primaryStage);
         });
 
+        
+
         // Agregar los botones al contenedor
-        buttonContainer.getChildren().addAll(inicioBtn, loginBtn);
+        buttonContainer.getChildren().addAll(aceptarBtn, cancelarBtn);
 
         // Establecer el fondo para el registro
         Image backgroundImage = new Image("file:src/main/resources/img/registro.png");
