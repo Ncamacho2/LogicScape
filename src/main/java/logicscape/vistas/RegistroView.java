@@ -28,7 +28,7 @@ public class RegistroView extends Application {
     private RegistroController registroController;
     private TextField userField;
     private PasswordField passwordField;
-    private PasswordField validarPassField;
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -52,15 +52,15 @@ public class RegistroView extends Application {
 
         userField = new TextField();
         passwordField = new PasswordField();
-        validarPassField = new PasswordField();
+  
    
         Label userLabel = new Label(" Ususario:");
         Label passwordLabel = new Label(" Nueva Contraseña:");
-        Label validarPassLabel = new Label(" Validar Contraseña:");
+  
     
         userLabel.getStyleClass().add("my-label");
         passwordLabel.getStyleClass().add("my-label");
-        validarPassLabel.getStyleClass().add("my-label");
+  
         
         inputContainer.add(userLabel, 0,3);
         userLabel.getStyleClass().add("my-registro");
@@ -70,10 +70,7 @@ public class RegistroView extends Application {
         passwordLabel.getStyleClass().add("my-registro");
         inputContainer.add(passwordField, 1, 4);
         passwordField.getStyleClass().add("my-registro");
-        inputContainer.add(validarPassLabel, 0, 5);
-        validarPassLabel.getStyleClass().add("my-registro");
-        inputContainer.add(validarPassField, 1, 5);
-        validarPassField.getStyleClass().add("my-registro");     
+           
         
 
         aceptarBtn = new Button("Aceptar");
@@ -91,9 +88,11 @@ public class RegistroView extends Application {
 
         });
         aceptarBtn.setOnAction(event -> {
-            InicioView inicioView = new InicioView();
-            InicioController inicioControler = new InicioController(inicioView);
-            inicioView.start(primaryStage);
+        	boolean logged = registroController.handleRegistro(userField.getText(), passwordField.getText());
+        	if(logged) {
+        		LoginView loginView = new LoginView();
+        		loginView.start(primaryStage);
+        	}
         });
         cancelarBtn.setOnAction(event -> {
             InicioView inicioView = new InicioView();
