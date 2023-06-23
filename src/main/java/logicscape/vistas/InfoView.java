@@ -61,7 +61,7 @@ public class InfoView extends Application {
         stackPane.setAlignment(Pos.CENTER);
         //Texto de la info 
         Label label = new Label(" JUEGO CREADO POR:\n\n"
-        		+ "-LUIS FELIPE AYALA FERNÁNDEZ \n"
+        		+ "-LUIS FELIPE AYALA FERNANDEZ \n"
         		+ "-NICOLAS BELTRAN VARGAS \n"
         		+ "-SANTIAGO BETANCUR VILLEGAS \n"
         		+ "-NELSON ALONSO CAMACHO CAMACHO \n"

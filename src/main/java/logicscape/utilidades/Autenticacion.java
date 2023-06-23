@@ -37,7 +37,7 @@ public class Autenticacion {
 		usuario.setUltimoIngreso(LocalDateTime.now());
 		usuario.setEscenarioActual(0);
 		usuario.setNivelActual(0);
-		usuario.setVidas(0);
+		usuario.setVidas(3);
 
 		try {
 			conexionSql.insert("usuarios", usuario.getColumnas(), usuario.getValores());
