@@ -63,7 +63,7 @@ public class FinalView extends Application {
         // Agregar una hoja de estilos CSS
         scene.getStylesheets().add("file:src/main/resources/css/application.css");
 
-        primaryStage.setTitle("Final View");
+        primaryStage.setTitle("Logic Scape");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
