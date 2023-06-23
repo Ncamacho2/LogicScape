@@ -2,8 +2,13 @@ package logicscape.controladores;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+
 import java.util.List;
 import java.util.ArrayList;
+
+import logicscape.utilidades.Escenarios;
+import logicscape.vistas.RespuestasView;
 import logicscape.vistas.RetoView;
 
 public class RetoController {
@@ -42,8 +47,23 @@ public class RetoController {
     public void mostrarMensaje(String mensaje) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Ventana emergente");
-            alert.setHeaderText("Información");
+            alert.setHeaderText("Informaciï¿½n");
             alert.setContentText(mensaje);
             alert.showAndWait();
     }
+
+	public void validarRespuesta(Integer respuesta, Escenarios escenario, Stage primaryStage) {
+		if(escenario.validarResultado(respuesta)) {
+        	RespuestasView respuestasView = new RespuestasView();
+            RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage);
+            respuestasController.setRespuesta("Correcto!");
+            respuestasView.start(primaryStage);        		
+    	} else {
+    		RespuestasView respuestasView = new RespuestasView();
+            RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage);
+            respuestasController.setRespuesta("Incorrecto!");
+            respuestasView.start(primaryStage);
+    	}
+		
+	}
 }

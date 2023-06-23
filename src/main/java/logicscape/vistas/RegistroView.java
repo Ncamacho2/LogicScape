@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.InicioController;
+import logicscape.controladores.LoginController;
 import logicscape.controladores.RegistroController;
 
 /**
@@ -105,7 +106,8 @@ public class RegistroView extends Application {
         aceptarBtn.setOnAction(event -> {
         	boolean logged = registroController.handleRegistro(userField.getText(), passwordField.getText());
         	if(logged) {
-        		LoginView loginView = new LoginView();
+        		InicioView loginView = new InicioView();
+        		InicioController loginControler = new InicioController (loginView);
         		loginView.start(primaryStage);
         	}
         });
