@@ -1,6 +1,10 @@
 package logicscape.vistas;
 
 import javafx.application.Application;
+import javafx.util.Duration;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,6 +19,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -97,7 +102,7 @@ public class NivelView extends Application {
         marciano1.setLayoutX(nuevaPosicionX);
         marciano1.setLayoutY(nuevaPosicionY);
         
-     // Establecer las coordenadas de cada instancia
+        // Establecer las coordenadas de cada instancia
         double posicionX1 = 410;  // Coordenada X para la primera instancia
         double posicionY1 = 165;  // Coordenada Y para la primera instancia
         marciano2.getImagen().setLayoutX(posicionX1);
@@ -109,10 +114,31 @@ public class NivelView extends Application {
         marciano3.getImagen().setLayoutX(posicionX2);
         marciano3.getImagen().setLayoutY(posicionY2);
         
+        // Creación del contenedor del texto para la info
+        HBox infoContainer = new HBox();
+        infoContainer.setMinWidth(600);
+        infoContainer.setMaxWidth(800);
+        infoContainer.setMinHeight(200);
+        infoContainer.setMaxHeight(300);
+        infoContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
+        infoContainer.setAlignment(Pos.CENTER); // Alineación central
+        //Texto de la info 
+        Label label = new Label(" Bienvenido a LogicScape, \n"
+        		+ " para ganar debes responder \n"
+        		+ " correctamente cada una de las \n"
+        		+ " preguntas segun el nivel \n"
+        		+ " que corresponda \n\n"
+        		+ " Presiona 'Iniciar' para \n"
+        		+ " comenzar el juego  ");
 
+    
+        infoContainer.getChildren().add(label);
+        
+        
         // Agregar clases CSS a los botones
         iniciarBtn.getStyleClass().add("my-button");
         backBtn.getStyleClass().add("my-button");
+        label.getStyleClass().add("my-texto");
 
        
         iniciarBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
@@ -144,9 +170,11 @@ public class NivelView extends Application {
         
 
         // Agregar el contenedor de botones al contenedor principal
+        root.getChildren().addAll(marciano1, marciano2.getImagen(), marciano3.getImagen());
         root.setBottom(buttonContainer);
         root.setTop(livesContainer);
-        root.getChildren().addAll(marciano1, marciano2.getImagen(), marciano3.getImagen());
+        root.setCenter(infoContainer);
+ 
         
         Scene scene = new Scene(root, 1024, 628);
         Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
@@ -156,7 +184,24 @@ public class NivelView extends Application {
         primaryStage.setTitle("Logic Scape");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        // Configurar la duración y animación del HBox
+        Duration duracionVisible = Duration.seconds(10);
+        Duration duracionTotal = duracionVisible.add(Duration.seconds(1)); // Agregar 1 segundo para la transición
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(infoContainer.opacityProperty(), 1.0)),
+                new KeyFrame(duracionVisible, new KeyValue(infoContainer.opacityProperty(), 1.0)),
+                new KeyFrame(duracionTotal, new KeyValue(infoContainer.opacityProperty(), 0.0))
+        );
+        timeline.play();
+
+        // Ocultar el HBox después de la duración total
+        timeline.setOnFinished(event -> infoContainer.setVisible(false));
+        
+     // Mover el HBox al frente
+        infoContainer.toFront();
     }
+   
 
 
     /**

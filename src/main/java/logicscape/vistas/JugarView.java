@@ -15,6 +15,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -46,7 +47,9 @@ public class JugarView extends Application {
         buttonContainer.setSpacing(50);
         buttonContainer.setPrefHeight(HEIGHTBUTTON);
         buttonContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
+        
 
+    
         // Creación del ImageView para la imagen de fondo
         Image backgroundImage = new Image("file:src/main/resources/img/nivel_final.png");
         ImageView backgroundImageView = new ImageView(backgroundImage);
@@ -97,6 +100,7 @@ public class JugarView extends Application {
 
         // Agregar el contenedor de botones al contenedor principal
         root.setBottom(buttonContainer);
+
         Scene scene = new Scene(root, 1024, 628);
         Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
         // Agregar una hoja de estilos CSS
