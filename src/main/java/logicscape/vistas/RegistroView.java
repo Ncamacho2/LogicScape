@@ -104,18 +104,13 @@ public class RegistroView extends Application {
         });
      // Acción al hacer clic en el botón "Aceptar"
         aceptarBtn.setOnAction(event -> {
-        	boolean logged = registroController.handleRegistro(userField.getText(), passwordField.getText());
-        	if(logged) {
-        		InicioView loginView = new InicioView();
-        		InicioController loginControler = new InicioController (loginView);
-        		loginView.start(primaryStage);
-        	}
+        	registroController.handleRegistro(userField.getText(), passwordField.getText(), primaryStage);
+        	
         });
         // Acción al hacer clic en el botón "Cancelar"
         cancelarBtn.setOnAction(event -> {
-            InicioView inicioView = new InicioView();
-            InicioController inicioControler = new InicioController(inicioView);
-            inicioView.start(primaryStage);
+          	registroController.handleCancelar(primaryStage);
+                 
         });
 
         // Agregar los botones al contenedor

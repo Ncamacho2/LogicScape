@@ -20,6 +20,7 @@ public class UsuarioMapper implements EntityMapper<Usuario> {
 		usuario.setUltimoIngreso(resultSet.getTimestamp("ultimoIngreso").toLocalDateTime());
 		usuario.setEscenarioActual(resultSet.getInt("EscenarioActual"));
 		usuario.setNivelActual(resultSet.getInt("NivelActual"));
+		usuario.setVidas(resultSet.getInt("vidas"));
 		return usuario;
 
 	}

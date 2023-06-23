@@ -101,9 +101,7 @@ public class InfoView extends Application {
         
         //Accion boton volver
         backBtn.setOnAction(event -> {
-            JugarView jugarView = new JugarView();
-            JugarController jugarController = new JugarController(jugarView);
-            jugarView.start(primaryStage);
+            infoController.handleButtonClick(primaryStage);
         });
 
 

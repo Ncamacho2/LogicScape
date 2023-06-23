@@ -1,48 +1,44 @@
 package logicscape.controladores;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import logicscape.mapper.UsuarioMapper;
-import logicscape.modelos.Usuario;
-import logicscape.utilidades.ConexionSql;
+import javafx.stage.Stage;
 import logicscape.vistas.InicioView;
-
+import logicscape.vistas.LoginView;
+import logicscape.vistas.RegistroView;
+/**
+ * Clase: InicioController
+ * Descripción: Esta clase es responsable de controlar las interacciones y eventos en la vista de inicio.
+ * 
+*/
 public class InicioController {
 	private InicioView inicioView;
+	/**
+	 * Constructor de la clase InicioController.
+	 * 
+	 * @param inicioView La vista de inicio asociada al controlador.
+	 */
 	public InicioController(InicioView inicioView) {
-        this.inicioView = inicioView;
-        this.inicioView.setInicioController(this);
-        
-    }
-	public void handleButtonClick(String string) {
-		ConexionSql<Usuario> conexion = new ConexionSql<>();
-		
-		// Ejemplo de insert de usuarios
-		Usuario usuario = new Usuario();
-		usuario.setVisible(true);
-		usuario.setDisponible(true);
-		usuario.setUltimaActualizacion(LocalDateTime.now());
-		usuario.setFechaCreacion(LocalDateTime.now());
-		usuario.setUsuario("PEPITO");
-		usuario.setPassword("hgjhgkhlkhjlkj");
-		usuario.setUltimoIngreso(LocalDateTime.now());
-		usuario.setEscenarioActual(0);
-		usuario.setNivelActual(0);		
-		conexion.insert("usuarios", usuario.getColumnas(), usuario.getValores());
-        
-		// Ejemplo de consulta de todos los usuarios
-        List<Usuario> usuarios = conexion.findAll("usuarios", new UsuarioMapper());
-        for (Usuario usuarioA : usuarios) {
-            System.out.println(usuarioA.getUsuario());
-        }
-		Alert alert = new Alert(AlertType.INFORMATION);
-	    alert.setTitle("Ventana emergente");
-	    alert.setHeaderText("Información");
-	    alert.setContentText("Reemplazar por la nueva ventana "+ string);
-	    alert.showAndWait();
+		this.inicioView = inicioView;
+		this.inicioView.setInicioController(this);
+
 	}
-	
+
+	/**
+	 * Maneja el evento de clic en los botones de la vista de inicio y realiza la navegación correspondiente.
+	 * 
+	 * @param string       El texto del botón que se ha clicado.
+	 * @param primaryStage El escenario principal de la aplicación.
+	 */
+	public void handleButtonClick(String string, Stage primaryStage) {
+		if (string.contentEquals("Ingresa")) {
+			LoginView loginView = new LoginView();
+			LoginController loginController = new LoginController(loginView);
+			loginView.start(primaryStage);
+		} else {
+			RegistroView registroView = new RegistroView();
+			RegistroController registroController = new RegistroController(registroView);
+			registroView.start(primaryStage);
+		}
+
+	}
+
 }

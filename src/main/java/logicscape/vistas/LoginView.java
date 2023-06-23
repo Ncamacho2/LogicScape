@@ -1,7 +1,6 @@
 package logicscape.vistas;
 
 import javafx.application.Application;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,8 +16,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import logicscape.controladores.InicioController;
-import logicscape.controladores.JugarController;
 import logicscape.controladores.LoginController;
 
 public class LoginView extends Application {
@@ -89,26 +86,14 @@ public class LoginView extends Application {
         inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
         loginBtn.setOnAction(event -> {
-        	boolean logged = loginController.handleLogin(usuarioField.getText(), contraseniaField.getText());
-        	if(logged) {
-        		JugarView jugarView = new JugarView();
-        		JugarController jugarControler = new JugarController(jugarView);
-        		jugarView.start(primaryStage);
-        	}
+			loginController.handleLogin(usuarioField.getText(), contraseniaField.getText(), primaryStage);
+        	
         });
         inicioBtn.setOnAction(event -> {
-            InicioView inicioView = new InicioView();
-            InicioController inicioControler = new InicioController(inicioView);
-            inicioView.start(primaryStage);
+        	loginController.handleCancelar(primaryStage);
         });
         
-        loginBtn.setOnAction(event -> {
-            JugarView jugarView = new JugarView();
-            logicscape.controladores.JugarController jugarControler = new logicscape.controladores.JugarController(jugarView);
-            jugarView.start(primaryStage);
-        });
-
-
+       
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, loginBtn);
 

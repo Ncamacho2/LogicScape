@@ -12,6 +12,7 @@ import logicscape.modelos.Usuario;
  */
 public class Autenticacion {
 	private ConexionSql<Usuario> conexionSql = new ConexionSql<>();
+	private Usuario usuarioActivo;
 
 	/**
 	 * Registra un nuevo usuario con el nombre de usuario y contraseña
@@ -36,6 +37,7 @@ public class Autenticacion {
 		usuario.setUltimoIngreso(LocalDateTime.now());
 		usuario.setEscenarioActual(0);
 		usuario.setNivelActual(0);
+		usuario.setVidas(0);
 
 		try {
 			conexionSql.insert("usuarios", usuario.getColumnas(), usuario.getValores());
@@ -72,9 +74,26 @@ public class Autenticacion {
 		for (Usuario usuario : resultado) {
 			if (usuario.getUsuario().equals(authusuario.getUsuario())
 					&& usuario.getPassword().equals(authusuario.getPassword())) {
+				setUsuarioActivo(usuario);
 				return true;
 			}
 		}
 		return false;
 	}
+
+	/**
+	 * @return the usuarioActivo
+	 */
+	public Usuario getUsuarioActivo() {
+		return usuarioActivo;
+	}
+
+	/**
+	 * @param usuarioActivo the usuarioActivo to set
+	 */
+	public void setUsuarioActivo(Usuario usuarioActivo) {
+		this.usuarioActivo = usuarioActivo;
+	}
+
+	
 }

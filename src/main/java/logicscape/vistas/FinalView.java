@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import logicscape.controladores.FinalController;
+import logicscape.controladores.InfoController;
 
 public class FinalView extends Application {
     private static final int WIDTH = 1024;
@@ -19,7 +21,7 @@ public class FinalView extends Application {
     private static final String BACKGROUND_IMAGE = "file:src/main/resources/img/nivel_final.png";
     private static final String FONT_PATH = "/font/PressStart2P-Regular.ttf";
     private static final String MESSAGE_STYLE = "-fx-padding: 20px; -fx-border-color: black; -fx-border-width: 10px; -fx-border-radius: 30px; -fx-background-radius: 30px;";
-
+    private FinalController finalController;
     private boolean lograEscapar;
 
     public FinalView(boolean lograEscapar) {
@@ -44,7 +46,7 @@ public class FinalView extends Application {
 
         // Creación del contenedor para el mensaje
         StackPane messageContainer = new StackPane();
-        Label messageLabel = new Label(lograEscapar ? "¡Felicidades\nLograste esscapar!" : "Game Over\n Buen intento");
+        Label messageLabel = new Label(lograEscapar ? "¡Felicidades\nLograste escapar!" : "Game Over\n Buen intento");
         messageLabel.setFont(Font.loadFont(getClass().getResourceAsStream(FONT_PATH), 48));
         messageLabel.setTextFill(Color.WHITE);
         // Estilos del mensaje + condicional para cambiar el color de fondo segun el resultado
@@ -65,7 +67,14 @@ public class FinalView extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    /**
+     * @param infoController the infoController to set
+     */
+    public void setFinalController(FinalController finalController) {
+        this.finalController = finalController;
+    }
+
+    void setStage(Stage primaryStag) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

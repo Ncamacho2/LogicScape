@@ -14,8 +14,8 @@ public class JugarMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		RetoView jugarView = new RetoView();
-		RetoController controller = new RetoController(jugarView);
+		JugarView jugarView = new JugarView();
+		JugarController controller = new JugarController(jugarView,null);
 		jugarView.start(primaryStage);
 	}
 }
