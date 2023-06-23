@@ -1,6 +1,9 @@
 package logicscape;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import logicscape.controladores.InicioController;
 import logicscape.vistas.FinalView;
@@ -12,7 +15,8 @@ public class Main extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("hellofx.fxml"));
 		InicioView inicioView = new InicioView();
 		InicioController controller = new InicioController(inicioView);
 		inicioView.start(primaryStage);
