@@ -62,12 +62,11 @@ public class LoginView extends Application {
         contraseniaLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 16));
 
         // Agregar estilo CSS personalizado a las etiquetas
-        usuarioLabel.setStyle("-fx-background-color: black; -fx-background-radius: 5;");
-        contraseniaLabel.setStyle("-fx-background-color: black; -fx-background-radius: 5;");
-        
+        usuarioLabel.getStyleClass().add("my-registro");
+        contraseniaLabel.getStyleClass().add("my-registro");
+
         usuarioLabel.setPadding(new Insets(10));
         contraseniaLabel.setPadding(new Insets(10));
-
 
         inputContainer.add(usuarioLabel, 0, 0);
         inputContainer.add(usuarioField, 1, 0);
@@ -78,27 +77,27 @@ public class LoginView extends Application {
         loginBtn = new Button("Login");
 
         // Agregar clases CSS a los botones
-        loginBtn.getStyleClass().add("my-button");
         inicioBtn.getStyleClass().add("my-button");
+        loginBtn.getStyleClass().add("my-button");
 
-        loginBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
-        loginBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
         inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
-        loginBtn.setOnAction(event -> {
-			loginController.handleLogin(usuarioField.getText(), contraseniaField.getText(), primaryStage);
-        	
-        });
+        loginBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
+        loginBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
+
         inicioBtn.setOnAction(event -> {
-        	loginController.handleCancelar(primaryStage);
+            loginController.handleCancelar(primaryStage);
         });
-        
-       
+
+        loginBtn.setOnAction(event -> {
+            loginController.handleLogin(usuarioField.getText(), contraseniaField.getText(), primaryStage);
+        });
+
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, loginBtn);
 
         // Creación del ImageView para la imagen de fondo
-        Image backgroundImage = new Image("file:src/main/resources/img/nivel_final.png");
+        Image backgroundImage = new Image("file:src/main/resources/img/registro.png");
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
         backgroundImageView.fitHeightProperty()
