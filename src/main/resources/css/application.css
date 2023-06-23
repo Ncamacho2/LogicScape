@@ -1,33 +1,45 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .my-button{
 	-fx-border-color: #000000;
-    -fx-border-width: 5.0px;
-    -fx-border-radius: 20.0px;
+    -fx-border-width: 10px;
+    -fx-border-radius: 30.0px;
     -fx-text-fill: black;
+    -fx-font-family: "Press Start 2P", sans-serif;
 	-fx-background-color: #00CB6D;
-    -fx-background-radius: 30.0px;
-    -fx-font-size: 40.0px;
-    -fx-effect: dropshadow(gaussian, rgba(0.0,0.0,0.0,0.4), 0.0, 0.0, 5.0, 5.0);
-   /* 
-    -fx-background-color: linear-gradient(to bottom, #00CB6D, #000000);*/
-    -fx-font-family: "Press Start 2P", sans-serif;
-
-}
-.my-button2{
-    -fx-text-fill: black;
-    -fx-font-family: "Press Start 2P", sans-serif;
-	-fx-background-color: #F9ED65;
     -fx-background-radius: 30px;
-    -fx-font-size: 30px;
+    -fx-font-size: 40px;
 }
-.my-button3{
+
+.my-registro{
 	-fx-border-color: #000000;
-    -fx-border-width: 5px;
-    -fx-border-radius: 20.0px;
+    -fx-border-width: 4px;
+    -fx-border-radius: 10.0px;
     -fx-text-fill: black;
     -fx-font-family: "Press Start 2P", sans-serif;
-	-fx-background-color: #00CB6D;
-    -fx-background-radius: 20px;
-    -fx-font-size: 50px;
+	-fx-background-color:white;
+    -fx-background-radius: 15px;
+    -fx-font-size: 18px;
+}
 
+
+.my-ecuacion{
+	-fx-border-color: #000000;
+    -fx-border-width: 6px;
+    -fx-border-radius: 10.0px;
+    -fx-text-fill: black;
+    -fx-font-family: "Press Start 2P", sans-serif;
+	-fx-background-color:#D479F4;
+    -fx-background-radius: 15px;
+    -fx-font-size: 50px;
+}
+
+.my-respuesta{
+	-fx-border-color: #000000;
+    -fx-border-width: 6px;
+    -fx-border-radius: 16.0px;
+    -fx-text-fill: black;
+    -fx-font-family: "Press Start 2P", sans-serif;
+	-fx-background-color:#4F92F6;
+    -fx-background-radius: 20px;
+    -fx-font-size: 35px;
 }

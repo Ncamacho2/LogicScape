@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author Nelson Camacho
+ *
+ */
 module AppLogicScape {
 	requires javafx.controls;
 	requires java.persistence;

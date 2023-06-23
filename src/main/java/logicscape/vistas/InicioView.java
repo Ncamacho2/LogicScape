@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.InicioController;
 import logicscape.controladores.LoginController;
+import logicscape.controladores.RegistroController;
 
 public class InicioView extends Application {
     private static final int WIDTH = 1024;
@@ -60,7 +61,12 @@ public class InicioView extends Application {
             LoginController loginController = new LoginController(loginView);
             loginView.start(primaryStage);
         });
-        registroBtn.setOnAction(event -> inicioController.handleButtonClick("registro"));
+        registroBtn.setOnAction(event -> {
+        	RegistroView registroView = new RegistroView();
+            RegistroController registroController = new RegistroController(registroView);
+            registroView.start(primaryStage);
+        });
+        
 
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, registroBtn);
@@ -76,6 +82,8 @@ public class InicioView extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    
+  
 
     /**
      * @param inicioController the inicioController to set
