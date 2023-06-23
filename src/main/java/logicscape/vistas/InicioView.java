@@ -61,13 +61,12 @@ public class InicioView extends Application {
             LoginController loginController = new LoginController(loginView);
             loginView.start(primaryStage);
         });
+
         registroBtn.setOnAction(event -> {
         	RegistroView registroView = new RegistroView();
             RegistroController registroController = new RegistroController(registroView);
             registroView.start(primaryStage);
         });
-        
-
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, registroBtn);
 

@@ -6,7 +6,6 @@ import logicscape.utilidades.Autenticacion;
 import logicscape.vistas.RegistroView;
 
 public class RegistroController {
-	
     private RegistroView registroView;
 
     /**

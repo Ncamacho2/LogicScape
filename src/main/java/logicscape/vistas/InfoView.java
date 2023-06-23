@@ -1,6 +1,7 @@
 package logicscape.vistas;
 
 import javafx.application.Application;
+import javafx.scene.layout.StackPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -39,12 +40,38 @@ public class InfoView extends Application {
         primaryStage.setHeight(HEIGHT);
         // Creación del contenedor principal
         BorderPane root = new BorderPane();
+        
         // Creación del contenedor para los botones en la parte inferior
         HBox buttonContainer = new HBox();
         buttonContainer.setPadding(new Insets(20));
         buttonContainer.setSpacing(50);
         buttonContainer.setPrefHeight(HEIGHTBUTTON);
         buttonContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
+        
+     // Creación del contenedor del texto
+        HBox infoContainer = new HBox();
+        infoContainer.setMinWidth(500);
+        infoContainer.setMaxWidth(700);
+        infoContainer.setMinHeight(300);
+        infoContainer.setMaxHeight(400);
+        infoContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
+        infoContainer.setAlignment(Pos.CENTER); // Alineación central
+
+        StackPane stackPane = new StackPane();
+        stackPane.setAlignment(Pos.CENTER);
+        //Texto de la info 
+        Label label = new Label(" JUEGO CREADO POR:\n\n"
+        		+ "-LUIS FELIPE AYALA FERNÁNDEZ \n"
+        		+ "-NICOLAS BELTRAN VARGAS \n"
+        		+ "-SANTIAGO BETANCUR VILLEGAS \n"
+        		+ "-NELSON ALONSO CAMACHO CAMACHO \n"
+        		+ "-SANTIAGO TOMAS SUAREZ PINZON \n\n"
+        		+ " PPBO1 - GRUPO 14 \n\n"
+        		+ " 2023");
+        stackPane.getChildren().add(label);
+      
+
+        infoContainer.getChildren().add(stackPane);
 
         // Creación del ImageView para la imagen de fondo
         Image backgroundImage = new Image("file:src/main/resources/img/nivel_final.png");
@@ -53,12 +80,20 @@ public class InfoView extends Application {
         backgroundImageView.fitHeightProperty()
                 .bind(primaryStage.heightProperty().subtract(buttonContainer.heightProperty()));
         root.getChildren().add(backgroundImageView);
+        
+        // Creacion de ventana info
+        HBox textboxContainer = new HBox();
+        textboxContainer.setPadding(new Insets(20));
+        textboxContainer.setSpacing(50);
+        textboxContainer.setPrefHeight(HEIGHTBUTTON);
+        textboxContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
 
         backBtn = new Button("Volver");
 
 
-        // Agregar clases CSS a los botones
+        // Agregar clases CSS a los elementos
         backBtn.getStyleClass().add("my-button");
+        label.getStyleClass().add("my-texto");
 
         backBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         backBtn.prefWidthProperty().bind(primaryStage.widthProperty());
@@ -71,14 +106,13 @@ public class InfoView extends Application {
             jugarView.start(primaryStage);
         });
 
-        
-
 
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(backBtn);
 
         // Agregar el contenedor de botones al contenedor principal
         root.setBottom(buttonContainer);
+        root.setCenter(infoContainer);
         Scene scene = new Scene(root, 1024, 628);
         Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
         // Agregar una hoja de estilos CSS

@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.InicioController;
+import logicscape.controladores.JugarController;
 import logicscape.controladores.LoginController;
 
 public class LoginView extends Application {
@@ -91,6 +92,7 @@ public class LoginView extends Application {
         	boolean logged = loginController.handleLogin(usuarioField.getText(), contraseniaField.getText());
         	if(logged) {
         		JugarView jugarView = new JugarView();
+        		JugarController jugarControler = new JugarController(jugarView);
         		jugarView.start(primaryStage);
         	}
         });
@@ -99,6 +101,13 @@ public class LoginView extends Application {
             InicioController inicioControler = new InicioController(inicioView);
             inicioView.start(primaryStage);
         });
+        
+        loginBtn.setOnAction(event -> {
+            JugarView jugarView = new JugarView();
+            logicscape.controladores.JugarController jugarControler = new logicscape.controladores.JugarController(jugarView);
+            jugarView.start(primaryStage);
+        });
+
 
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, loginBtn);
