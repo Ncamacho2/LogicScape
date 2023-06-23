@@ -6,141 +6,114 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import logicscape.controladores.InicioController;
-import logicscape.controladores.RegistroController;
+import logicscape.controladores.RespuestasController;
 import logicscape.controladores.RetoController;
 
+import java.util.List;
 
-public class RetoView extends Application{
-	
-	private static final int WIDTH = 800;
+public class RetoView extends Application {
+
+    private static final int WIDTH = 800;
     private static final int HEIGHT = 500;
     private static final int HEIGHTBUTTON = 100;
     private Button loginBtn;
     private Button inicioBtn;
     private RetoController retoController;
-    private TextField ecuacionField;
-    private TextField respuesta1Field;
-    private TextField respuesta2Field;
-    private TextField respuesta3Field;
-    private TextField respuesta4Field;
-
-
+    private Label ecuacionField;
+    private ToggleGroup group;
 
     @Override
     public void start(Stage primaryStage) {
-        // Configuración de la ventana principal
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
-        // Creación del contenedor principal
         BorderPane root = new BorderPane();
-        // Creación del contenedor para los botones en la parte inferior
+        root.setStyle("-fx-background-image: url('file:/C:/Users/tomsu/git/LogicScape/src/main/resources/img/fondo.png'); -fx-background-size: cover;");
         HBox buttonContainer = new HBox();
         buttonContainer.setPadding(new Insets(20));
         buttonContainer.setSpacing(10);
         buttonContainer.setPrefHeight(HEIGHTBUTTON);
-        buttonContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
+        buttonContainer.getStyleClass().add("my-container");
 
-        // Creación del contenedor para los campos de entrada
         GridPane inputContainer = new GridPane();
         inputContainer.setPadding(new Insets(85));
         inputContainer.setVgap(20);
-        inputContainer.setAlignment(Pos.CENTER_RIGHT);
+        inputContainer.setAlignment(Pos.CENTER);
 
-        ecuacionField = new TextField();
-        respuesta1Field = new TextField();
-        respuesta2Field = new TextField();
-        respuesta3Field = new TextField();
-        respuesta4Field = new TextField();
-   
+        ecuacionField = new Label("2 + 2");
+        ecuacionField.setFont(new Font(45));
+        ecuacionField.setStyle("-fx-text-fill: black;"); 
+        group = new ToggleGroup();
+        List<String> answers = retoController.getAnswers();
+        for (int i = 0; i < answers.size(); i++) {
+            RadioButton radioButton = new RadioButton(answers.get(i));
+            radioButton.setToggleGroup(group);
+            radioButton.setStyle("-fx-text-fill: black; -fx-font-size: 30;"); // Add this line to make the text color white and larger
+            inputContainer.add(radioButton, i % 2, i / 2 + 1);
+        }
 
-        Label ecuacionLabel = new Label(" x+y=? ");
-        Label respuesta1Label = new Label(" A ");
-        Label respuesta2Label = new Label(" B ");
-        Label respuesta3Label = new Label(" C ");
-        Label respuesta4Label = new Label(" D ");     
-
-        ecuacionLabel.getStyleClass().add("my-label");
-        respuesta1Label.getStyleClass().add("my-label");
-        respuesta2Label.getStyleClass().add("my-label");
-        respuesta3Label.getStyleClass().add("my-label");
-        respuesta4Label.getStyleClass().add("my-label");
-        
-        inputContainer.add(ecuacionLabel, 0,0);
-        ecuacionLabel.getStyleClass().add("my-ecuacion");
-        inputContainer.add(respuesta1Label, 1, 1);
-        respuesta1Label.getStyleClass().add("my-respuesta");
-        inputContainer.add(respuesta2Label, 2, 1);
-        respuesta2Label.getStyleClass().add("my-respuesta");
-        inputContainer.add(respuesta3Label, 1,3);
-        respuesta3Label.getStyleClass().add("my-respuesta");
-        inputContainer.add(respuesta4Label, 2, 3);
-        respuesta4Label.getStyleClass().add("my-respuesta");    
-
+        inputContainer.add(ecuacionField, 0,0, 2, 1);
         inicioBtn = new Button("Aceptar");
         loginBtn = new Button("Cancelar");
 
-        // Agregar clases CSS a los botones
         loginBtn.getStyleClass().add("my-button");
         inicioBtn.getStyleClass().add("my-button");
 
-        loginBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
-        loginBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(1));
-        inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
-        inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(1));
-        loginBtn.setOnAction(event -> {
+        loginBtn.prefHeightProperty().bind(buttonContainer.heightProperty().multiply(0.3)); // 60% of the container height
+        loginBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(1.1)); // 2/3 of the primaryStage width
+        inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty().multiply(0.3)); // 60% of the container height
+        inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(1.1)); // 2/3 of the primaryStage width
 
+        
+        loginBtn.setOnAction(event -> {
+            // Handle the event for the Cancelar button
         });
         
         inicioBtn.setOnAction(event -> {
-            InicioView inicioView = new InicioView();
-            InicioController inicioControler = new InicioController(inicioView);
-            inicioView.start(primaryStage);
+            RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
+            String selectedAnswer = selectedRadioButton.getText();
+            
+            // Check if the answer is correct
+            if (retoController.checkAnswer(selectedAnswer)) {
+                // if correct, display correct scene
+                RespuestasView respuestasView = new RespuestasView();
+                RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage);
+                respuestasController.setRespuesta("Correcto!");
+                respuestasView.start(primaryStage);
+            } else {
+                // if incorrect, display incorrect scene or message
+                RespuestasView respuestasView = new RespuestasView();
+                RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage);
+                respuestasController.setRespuesta("Incorrecto!");
+                respuestasView.start(primaryStage);
+            }
         });
 
+        buttonContainer.getChildren().addAll(inicioBtn, loginBtn);
 
-        // Establecer el fondo para el registro
-        Image backgroundImage = new Image("file:src/main/resources/img/reto.png");
-		ImageView backgroundImageView = new ImageView(backgroundImage);
-		backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
-		backgroundImageView.fitHeightProperty()
-				.bind(primaryStage.heightProperty().subtract(buttonContainer.heightProperty()));
-		root.getChildren().add(backgroundImageView);
-
-
-
-        //Agregar los contenedores al contenedor principal
         root.setCenter(inputContainer);
+        root.setBottom(buttonContainer);
 
-        Scene scene = new Scene(root, 800, 500);
-        Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
-        // Agregar una hoja de estilos CSS
-        scene.getStylesheets().add("file:src/main/resources/css/application.css");
-
-        primaryStage.setTitle("Logic Scape - Reto");
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("file:src/main/resources/css/application2.css");
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Reto");
         primaryStage.show();
     }
-	/**
-	 * @param inicioController the inicioController to set
-	 */
-	public void setRetoController(RetoController retoController) {
-		this.retoController = retoController;
-	}
 
+    public void setRetoController(RetoController retoController) {
+        this.retoController = retoController;
+    }
 
-	void setStage(Stage primaryStage) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
