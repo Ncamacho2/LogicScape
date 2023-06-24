@@ -21,7 +21,7 @@ public class RespuestasView extends Application {
         layout.getChildren().add(answerLabel);
         scene = new Scene(layout, 300, 200);
         
-        scene.getStylesheets().add("css/application2.css");
+        scene.getStylesheets().add("file:src/main/resources/css/application2.css");
         primaryStage.setScene(scene);
         primaryStage.show();
 

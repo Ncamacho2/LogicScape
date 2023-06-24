@@ -104,7 +104,7 @@ public class RegistroView extends Application {
         buttonContainer.getChildren().addAll( cancelarBtn, aceptarBtn);
 
         // Establecer el fondo para el registro
-        Image backgroundImage = new Image("img/registro.png");
+        Image backgroundImage = new Image("file:src/main/resources/img/registro.png");
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
         backgroundImageView.fitHeightProperty()
@@ -119,7 +119,7 @@ public class RegistroView extends Application {
         Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
 
         // Agregar una hoja de estilos CSS
-        scene.getStylesheets().add("css/application.css");
+        scene.getStylesheets().add("file:src/main/resources/css/application.css");
 
         primaryStage.setTitle("Logic Scape - Registro");
         primaryStage.setScene(scene);
