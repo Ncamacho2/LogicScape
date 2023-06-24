@@ -134,7 +134,7 @@ public class RetoView extends Application {
 		});
 
 		// Establecer el fondo para el registro
-		Image backgroundImage = new Image("file:src/main/resources/img/reto.png");
+		Image backgroundImage = new Image(getClass().getResource("/img/reto.png").toExternalForm());
 		ImageView backgroundImageView = new ImageView(backgroundImage);
 		backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
 		backgroundImageView.fitHeightProperty()
@@ -147,7 +147,7 @@ public class RetoView extends Application {
 		Scene scene = new Scene(root, 800, 500);
 		Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
 		// Agregar una hoja de estilos CSS
-		scene.getStylesheets().add("file:src/main/resources/css/application.css");
+		scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
 		primaryStage.setTitle("Logic Scape - Reto");
 		primaryStage.setScene(scene);

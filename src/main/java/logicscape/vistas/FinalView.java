@@ -18,8 +18,8 @@ import logicscape.controladores.InfoController;
 public class FinalView extends Application {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 628;
-    private static final String BACKGROUND_SUCCESS = "file:src/main/resources/img/registro.png";
-    private static final String BACKGROUND_FAIL = "file:src/main/resources/img/nivel_final.png";
+    private static final String BACKGROUND_SUCCESS = "/img/registro.png";
+    private static final String BACKGROUND_FAIL = "/img/nivel_final.png";
     private static final String FONT_PATH = "/font/PressStart2P-Regular.ttf";
     private static final String MESSAGE_STYLE = "-fx-padding: 20px; -fx-border-color: black; -fx-border-width: 10px; -fx-border-radius: 30px; -fx-background-radius: 30px;";
     private FinalController finalController;
@@ -39,7 +39,7 @@ public class FinalView extends Application {
         BorderPane root = new BorderPane();
 
         // Creación del ImageView para la imagen de fondo
-        Image backgroundImage = new Image(lograEscapar ? BACKGROUND_SUCCESS : BACKGROUND_FAIL);
+        Image backgroundImage = new Image(getClass().getResource(lograEscapar ? BACKGROUND_SUCCESS : BACKGROUND_FAIL).toExternalForm());
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
         backgroundImageView.fitHeightProperty().bind(primaryStage.heightProperty());
@@ -61,7 +61,7 @@ public class FinalView extends Application {
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 
         // Agregar una hoja de estilos CSS
-        scene.getStylesheets().add("file:src/main/resources/css/application.css");
+        scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
         primaryStage.setTitle("Logic Scape");
         primaryStage.setScene(scene);
@@ -69,7 +69,7 @@ public class FinalView extends Application {
     }
 
     /**
-     * @param infoController the infoController to set
+     * @param finalController the infoController to set
      */
     public void setFinalController(FinalController finalController) {
         this.finalController = finalController;

@@ -97,7 +97,7 @@ public class LoginView extends Application {
         buttonContainer.getChildren().addAll(inicioBtn, loginBtn);
 
         // Creación del ImageView para la imagen de fondo
-        Image backgroundImage = new Image("file:src/main/resources/img/registro.png");
+        Image backgroundImage = new Image(getClass().getResource("/img/registro.png").toExternalForm());
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
         backgroundImageView.fitHeightProperty()
@@ -111,7 +111,7 @@ public class LoginView extends Application {
         Scene scene = new Scene(root, 1024, 628);
         Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
         // Agregar una hoja de estilos CSS
-        scene.getStylesheets().add("file:src/main/resources/css/application.css");
+        scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
         primaryStage.setTitle("Logic Scape - Login");
         primaryStage.setScene(scene);

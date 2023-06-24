@@ -63,7 +63,7 @@ public class NivelView extends Application {
 		// livesContainer.setStyle("-fx-background-color: #F9ED65;");
 
 		// Creación del ImageView para la imagen de fondo
-		Image backgroundImage = new Image("file:src/main/resources/img/fondo_escenario.png");
+		Image backgroundImage = new Image(getClass().getResource("/img/fondo_escenario.png").toExternalForm());
 		ImageView backgroundImageView = new ImageView(backgroundImage);
 		backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
 		backgroundImageView.fitHeightProperty()
@@ -194,7 +194,7 @@ public class NivelView extends Application {
 			Scene scene = new Scene(root, 1024, 628);
 			Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
 			// Agregar una hoja de estilos CSS
-			scene.getStylesheets().add("file:src/main/resources/css/application.css");
+			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
 			primaryStage.setTitle("Logic Scape");
 			primaryStage.setScene(scene);
