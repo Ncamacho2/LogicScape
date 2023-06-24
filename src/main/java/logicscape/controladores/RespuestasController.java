@@ -38,38 +38,53 @@ public class RespuestasController {
 	}
 
 	private void mostrarMensaje(String mensaje, boolean isCorrect) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Ventana emergente");
-		alert.setHeaderText(null); // Remove header text
+	    Alert alert = new Alert(AlertType.INFORMATION);
+	    alert.setTitle("Ventana emergente");
+	    alert.setHeaderText(null); // Remove header text
 
-		DialogPane dialogPane = alert.getDialogPane();
-		dialogPane.setPrefSize(600, 400); // Set preferred size for dialogPane
+	    DialogPane dialogPane = alert.getDialogPane();
+	    dialogPane.setPrefSize(600, 400); // Set preferred size for dialogPane
 
-		// Create an ImageView for the image and set its size
-		ImageView imageView = new ImageView(new Image("file:src/main/resources/img/marciano.png"));
-		imageView.setFitWidth(100); // Set width
-		imageView.setFitHeight(100); // Set height
+	    ImageView imageViewMarciano;
 
-		// Create a Text node for the message with larger font size
-		Text textNode = new Text(mensaje);
-		textNode.setStyle("-fx-font-size: 30px; -fx-fill: white;"); // Set the font size and color
+	    // Escoger la imagen apropiada basada en si la rta es correcta
+	    if (isCorrect) {
+	        // Use the happy marciano image when the answer is correct
+	        imageViewMarciano = new ImageView(new Image(getClass().getResource("/img/marciano.png").toExternalForm()));
+	    } else {
+	        // Usar el marciano triste en la imagen que la rta es incorrecta. 
+	        imageViewMarciano = new ImageView(new Image(getClass().getResource("/img/sadmarciano.png").toExternalForm()));
+	    }
 
-		// Create a VBox to hold the image and the message
-		VBox vbox = new VBox(imageView, textNode);
-		vbox.setAlignment(Pos.CENTER); // Center align the contents
+	    imageViewMarciano.setFitWidth(100); // Set width
+	    imageViewMarciano.setFitHeight(100); // Set height
 
-		// Set the vbox as the content of the DialogPane
-		dialogPane.setContent(vbox);
+	    // Create an ImageView for the new image and set its size
+	    ImageView imageViewFondo2 = new ImageView(new Image(getClass().getResource("/img/fondo_2.png").toExternalForm()));
+	    imageViewFondo2.setFitWidth(100); // Definir Ancho 
+	    imageViewFondo2.setFitHeight(100); // Definir alto
 
-		// Apply the CSS styles
-		if (isCorrect) {
-			dialogPane.setStyle("-fx-background-color: green;");
-		} else {
-			dialogPane.setStyle("-fx-background-color: red;");
-		}
+	    // Crear un nodo de texto para el mensaje en una fuente mas grande
+	    Text textNode = new Text(mensaje);
+	    textNode.setStyle("-fx-font-size: 30px; -fx-fill: white;"); // Set the font size and color
 
-		alert.showAndWait();
+	    // Crea un vbox que contenga la imagen y el mensaje 
+	    VBox vbox = new VBox(imageViewMarciano, imageViewFondo2, textNode);
+	    vbox.setAlignment(Pos.CENTER); // Center align the contents
+
+	    //Poner el vbox y el contenido del dialogo de panel
+	    dialogPane.setContent(vbox);
+
+	    // Aplicar el estilo CSS
+	    if (isCorrect) {
+	        dialogPane.setStyle("-fx-background-color: green;");
+	    } else {
+	        dialogPane.setStyle("-fx-background-color: red;");
+	    }
+
+	    alert.showAndWait();
 	}
+
 
 	public void iniciar() {
 		if (respuesta != null) {
@@ -85,8 +100,8 @@ public class RespuestasController {
 
 	public void displayResult(String result) {
 		boolean isCorrect = result.equals("Correcto!");
-		System.out.println("Result: " + result); // Debug print statement
-		System.out.println("isCorrect: " + isCorrect); // Debug print statement
+		System.out.println("Result: " + result); // Debug print 
+		System.out.println("isCorrect: " + isCorrect); // Debug print 
 		this.mostrarMensaje(result, isCorrect);
 	}
 

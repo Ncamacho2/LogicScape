@@ -25,9 +25,9 @@ public class RespuestasView extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // Initiate controller after all your view components have been set up
+        // Iniciar controlador luego de crear componentes 
         if (respuestasController != null) {
-            respuestasController.setRespuesta(respuestasController.getRespuesta()); // use the respuesta already set in the controller
+            respuestasController.setRespuesta(respuestasController.getRespuesta()); // usar respuesta creado en el set del controller
             respuestasController.iniciar();
         }}
        
