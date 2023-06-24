@@ -3,9 +3,11 @@
 
 # LogicScape Diagrama de clases
 
-![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/b97eda3d-25ef-479a-b7a2-edeb4c74b676)
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/e04e86df-a274-4dce-8f87-f43627898410)
 
-![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/6dfddd3d-7171-42c7-9d3f-7b4d43a16b62)
+
+![image](https://github.com/Ncamacho2/LogicScape/assets/41797822/5ef5ab26-5fc0-49ec-b8cc-34b6570fdedd)
+
 
 
 
