@@ -18,6 +18,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.LoginController;
 
+/**
+ * La clase LoginView es una aplicación de JavaFX que representa la vista de inicio de sesión de la aplicación Logic Scape.
+ */
 public class LoginView extends Application {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 628;
@@ -28,13 +31,20 @@ public class LoginView extends Application {
     private TextField usuarioField;
     private PasswordField contraseniaField;
 
+    /**
+     * El método start es llamado cuando se inicia la aplicación y muestra la interfaz de inicio de sesión.
+     *
+     * @param primaryStage el escenario principal de JavaFX
+     */
     @Override
     public void start(Stage primaryStage) {
         // Configuración de la ventana principal
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
+
         // Creación del contenedor principal
         BorderPane root = new BorderPane();
+
         // Creación del contenedor para los botones en la parte inferior
         HBox buttonContainer = new HBox();
         buttonContainer.setPadding(new Insets(20));
@@ -73,6 +83,7 @@ public class LoginView extends Application {
         inputContainer.add(contraseniaLabel, 0, 1);
         inputContainer.add(contraseniaField, 1, 1);
 
+        // Creación de los botones
         inicioBtn = new Button("Volver");
         loginBtn = new Button("Login");
 
@@ -80,15 +91,18 @@ public class LoginView extends Application {
         inicioBtn.getStyleClass().add("my-button");
         loginBtn.getStyleClass().add("my-button");
 
+        // Asignar propiedades de tamaño a los botones
         inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
         loginBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
         loginBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
 
+        // Acción del botón "Volver"
         inicioBtn.setOnAction(event -> {
             loginController.handleCancelar(primaryStage);
         });
 
+        // Acción del botón "Login"
         loginBtn.setOnAction(event -> {
             loginController.handleLogin(usuarioField.getText(), contraseniaField.getText(), primaryStage);
         });

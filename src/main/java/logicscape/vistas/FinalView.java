@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 import logicscape.controladores.FinalController;
 import logicscape.controladores.InfoController;
 
+/**
+ * La clase FinalView representa la vista de la pantalla final del juego.
+ * Muestra un mensaje y una imagen de fondo dependiendo de si el jugador logra escapar o no.
+ */
 public class FinalView extends Application {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 628;
@@ -25,6 +29,10 @@ public class FinalView extends Application {
     private FinalController finalController;
     private boolean lograEscapar;
 
+    /**
+     * Construye un nuevo objeto FinalView con la condición de logro de escape especificada.
+     * @param lograEscapar true si el jugador logra escapar, false en caso contrario.
+     */
     public FinalView(boolean lograEscapar) {
         this.lograEscapar = lograEscapar;
     }
@@ -50,7 +58,7 @@ public class FinalView extends Application {
         Label messageLabel = new Label(lograEscapar ? "¡Felicidades\nLograste escapar!" : "Game Over\n Buen intento");
         messageLabel.setFont(Font.loadFont(getClass().getResourceAsStream(FONT_PATH), 48));
         messageLabel.setTextFill(Color.WHITE);
-        // Estilos del mensaje + condicional para cambiar el color de fondo segun el resultado
+        // Estilos del mensaje + condicional para cambiar el color de fondo según el resultado
         messageLabel.setStyle(MESSAGE_STYLE + "-fx-background-color:" + (lograEscapar ? "#00CB6D;" : "#ff3535"));
         messageLabel.setTextAlignment(TextAlignment.CENTER);
         messageContainer.getChildren().add(messageLabel);
@@ -69,12 +77,14 @@ public class FinalView extends Application {
     }
 
     /**
-     * @param finalController the infoController to set
+     * Establece el controlador finalController para esta vista.
+     * @param finalController El controlador FinalController a establecer.
      */
     public void setFinalController(FinalController finalController) {
         this.finalController = finalController;
     }
 
+    // Método no implementado, se debe implementar correctamente si se va a utilizar.
     void setStage(Stage primaryStag) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
