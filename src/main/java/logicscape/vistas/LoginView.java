@@ -50,6 +50,8 @@ public class LoginView extends Application {
 
         usuarioField = new TextField();
         contraseniaField = new PasswordField();
+        usuarioField.setFont(Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 16));
+        contraseniaField.setFont(Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 16));
 
         Label usuarioLabel = new Label("Usuario:");
         Label contraseniaLabel = new Label("Contraseña:");

@@ -12,8 +12,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import logicscape.controladores.JugarController;
 import logicscape.controladores.FinalController;
 import logicscape.controladores.InfoController;
+
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 public class FinalView extends Application {
     private static final int WIDTH = 1024;
@@ -55,8 +59,36 @@ public class FinalView extends Application {
         messageLabel.setTextAlignment(TextAlignment.CENTER);
         messageContainer.getChildren().add(messageLabel);
         messageContainer.setAlignment(Pos.CENTER);
-        
+
         root.setCenter(messageContainer);
+
+        // Creación de los botones
+        Button jugarDeNuevoBtn = new Button("Jugar de nuevo");
+        Button salirBtn = new Button("Salir");
+        
+        // Metodos botones
+        jugarDeNuevoBtn.setOnAction(event -> {
+        	JugarView jugarView = new JugarView();
+        	JugarController controller = new JugarController(jugarView, null);
+        	
+        	jugarView.start(primaryStage);
+        });
+        
+        salirBtn.setOnAction(event -> {
+			System.exit(0);
+		});
+
+        // Estilos de los botones
+        jugarDeNuevoBtn.getStyleClass().add("my-button");
+        salirBtn.getStyleClass().add("my-button");
+
+        // Contenedor para los botones
+        HBox buttonContainer = new HBox(10);
+        buttonContainer.getChildren().addAll(jugarDeNuevoBtn, salirBtn);
+        buttonContainer.setAlignment(Pos.CENTER);
+        buttonContainer.setStyle("-fx-background-color: #F9ED65; -fx-padding: 20px;");
+
+        root.setBottom(buttonContainer);
 
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 

@@ -53,6 +53,9 @@ public class RegistroView extends Application {
         // Creación de los elementos gráficos
         userField = new TextField();
         passwordField = new PasswordField();
+        userField.setFont(Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 16));
+        passwordField.setFont(Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 16));
+        
         Label userLabel = new Label("Usuario:");
         Label passwordLabel = new Label("Contraseña:");
 
