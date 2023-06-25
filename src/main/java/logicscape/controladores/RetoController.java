@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 import java.util.List;
 import java.util.ArrayList;
 
+import logicscape.mapper.UsuarioMapper;
+import logicscape.modelos.Usuario;
+import logicscape.utilidades.ConexionSql;
 import logicscape.utilidades.Escenarios;
 import logicscape.vistas.RespuestasView;
 import logicscape.vistas.RetoView;
@@ -15,17 +18,13 @@ public class RetoController {
 	
 	private RetoView retoView;
 	private RespuestasController respuestasController;
-	private String correctAnswer = "4"; 
-    private List<String> answers = new ArrayList<>();
+	private Usuario usuario;
 
-	public RetoController(RetoView retoView) {
+	public RetoController(RetoView retoView, Usuario usuario) {
             this.retoView = retoView;
+            this.setUsuario(usuario);
             this.retoView.setRetoController(this);
-            // Add possible answers
-            answers.add("2");
-            answers.add("3");
-            answers.add("4");
-            answers.add("5");
+ 
     }
 
     // Method to set RespuestasController
@@ -33,17 +32,7 @@ public class RetoController {
         this.respuestasController = respuestasController;
     }
 
-	public List<String> getAnswers() {
-		return answers;
-	}
-	public String getCorrectAnswer() {
-	    return correctAnswer;
-	}
-
-	public boolean checkAnswer(String userAnswer) {
-		return correctAnswer.equals(userAnswer);
-	}
-
+	
     public void mostrarMensaje(String mensaje) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Ventana emergente");
@@ -53,17 +42,34 @@ public class RetoController {
     }
 
 	public void validarRespuesta(Integer respuesta, Escenarios escenario, Stage primaryStage) {
+		ConexionSql<Usuario> conexion = new ConexionSql<>();
 		if(escenario.validarResultado(respuesta)) {
+			usuario = conexion.findById("usuarios","id", usuario.getId(), new UsuarioMapper());
         	RespuestasView respuestasView = new RespuestasView();
-            RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage);
+            RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage, usuario);
             respuestasController.setRespuesta("Correcto!");
             respuestasView.start(primaryStage);        		
     	} else {
-    		RespuestasView respuestasView = new RespuestasView();
-            RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage);
+    		usuario = conexion.findById("usuarios","id", usuario.getId(), new UsuarioMapper());
+        	RespuestasView respuestasView = new RespuestasView();
+            RespuestasController respuestasController = new RespuestasController(respuestasView, primaryStage, usuario);
             respuestasController.setRespuesta("Incorrecto!");
             respuestasView.start(primaryStage);
     	}
 		
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

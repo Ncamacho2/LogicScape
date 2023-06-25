@@ -157,7 +157,7 @@ public class Escenarios {
 		Integer numB = generaAleatorioPorNivel(getNivelId());
 
 		if (getEscenarioId() == 0) {
-			setPregunta(numA + " + " + numB + "= ?" );
+			setPregunta(numA + " + " + numB + "= ?");
 			setResultado(numA + numB);
 		} else if (getEscenarioId() == 1) {
 			setPregunta(numA + " - " + numB + "= ?");
@@ -211,7 +211,7 @@ public class Escenarios {
 	 */
 	public Boolean validarResultado(Integer resultadoUser) {
 		try {
-			if (resultadoUser == getResultado()) {
+			if (resultadoUser.equals(resultado)) {
 				ConexionSql<Usuario> conexionSql = new ConexionSql<>();
 				Usuario usuario = conexionSql.findById("usuarios", "id", getUsuarioId(), new UsuarioMapper());
 				if (getNivelId() == 2) {
@@ -222,13 +222,59 @@ public class Escenarios {
 				}
 				conexionSql.update("usuarios", "id", getUsuarioId(), usuario.getColumnas(), usuario.getValores());
 				return true;
+			} else {
+				ConexionSql<Usuario> conexionSql = new ConexionSql<>();
+				Usuario usuario = conexionSql.findById("usuarios", "id", getUsuarioId(), new UsuarioMapper());
+				if (getNivelId() != 0) {
+					usuario.setNivelActual(getNivelId() - 1);
+
+				}
+				usuario.setVidas(usuario.getVidas() - 1);
+				conexionSql.update("usuarios", "id", getUsuarioId(), usuario.getColumnas(), usuario.getValores());
+				return false;
 			}
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		return false;
 
+	}
+
+	/**
+	 * Reinicia el número de vidas del usuario en 3. Actualiza la información del
+	 * usuario en la base de datos.
+	 *
+	 * @param resultadoUser El resultado actual del usuario.
+	 * @return El objeto Usuario actualizado después de reiniciar las vidas.
+	 */
+	public Usuario reiniciarVidas(Integer resultadoUser) {
+		ConexionSql<Usuario> conexionSql = new ConexionSql<>();
+		Usuario usuario = conexionSql.findById("usuarios", "id", getUsuarioId(), new UsuarioMapper());
+		usuario.setVidas(3);
+		conexionSql.update("usuarios", "id", getUsuarioId(), usuario.getColumnas(), usuario.getValores());
+		usuario = conexionSql.findById("usuarios", "id", getUsuarioId(), new UsuarioMapper());
+		return usuario;
+	}
+
+	/**
+	 * Reinicia el juego del usuario. Establece el número de vidas en 3, el
+	 * escenario actual y el nivel actual en 0. Actualiza la información del usuario
+	 * en la base de datos.
+	 *
+	 * @param resultadoUser El resultado actual del usuario.
+	 * @return El objeto Usuario actualizado después de reiniciar el juego.
+	 */
+	public Usuario reiniciarJuego(Integer resultadoUser) {
+		ConexionSql<Usuario> conexionSql = new ConexionSql<>();
+		Usuario usuario = conexionSql.findById("usuarios", "id", getUsuarioId(), new UsuarioMapper());
+		usuario.setVidas(3);
+		usuario.setEscenarioActual(0);
+		usuario.setNivelActual(0);
+		conexionSql.update("usuarios", "id", getUsuarioId(), usuario.getColumnas(), usuario.getValores());
+		usuario = conexionSql.findById("usuarios", "id", getUsuarioId(), new UsuarioMapper());
+		return usuario;
 	}
 
 }

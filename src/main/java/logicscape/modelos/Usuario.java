@@ -22,6 +22,7 @@ public class Usuario extends Base {
 	private LocalDateTime ultimoIngreso;
 	private Integer EscenarioActual;
 	private Integer NivelActual;
+	private Integer vidas;
 
 	/**
 	 * @return the usuario
@@ -98,6 +99,20 @@ public class Usuario extends Base {
 	 */
 	public void setNivelActual(Integer nivelActual) {
 		NivelActual = nivelActual;
+	}
+
+	/**
+	 * @return the vidas
+	 */
+	public Integer getVidas() {
+		return vidas;
+	}
+
+	/**
+	 * @param vidas the vidas to set
+	 */
+	public void setVidas(Integer vidas) {
+		this.vidas = vidas;
 	}
 	
 }

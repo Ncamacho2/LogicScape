@@ -1,50 +1,73 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .my-button{
 	-fx-border-color: #000000;
-    -fx-border-width: 10px;
-    -fx-border-radius: 30.0px;
+     -fx-border-width: 5.0px;
+    -fx-border-radius: 20.0px;
     -fx-text-fill: black;
     -fx-font-family: "Press Start 2P", sans-serif;
 	-fx-background-color: #00CB6D;
-    -fx-background-radius: 30px;
-    -fx-font-size: 40px;
+    -fx-background-radius: 20.0px;
+    -fx-font-size: 40.0px;
 }
+.my-button2{
+    -fx-text-fill: black;
+    -fx-font-family: "Press Start 2P", sans-serif;
+	-fx-background-color: #F9ED65;
+    -fx-background-radius: 30.0px;
+    -fx-font-size: 30.0px;
+}
+.my-button3{
+	-fx-border-color: #000000;
+    -fx-border-width: 5.0px;
+    -fx-border-radius: 20.0px;
+    -fx-text-fill: black;
+    -fx-font-family: "Press Start 2P", sans-serif;
+	-fx-background-color: #00CB6D;
+    -fx-background-radius: 20.0px;
+    -fx-font-size: 40.0px;
 
+}
 .my-registro{
 	-fx-border-color: #000000;
-    -fx-border-width: 4px;
+    -fx-border-width: 4.0px;
     -fx-border-radius: 10.0px;
     -fx-text-fill: black;
     -fx-font-family: "Press Start 2P", sans-serif;
 	-fx-background-color:white;
-    -fx-background-radius: 15px;
-    -fx-font-size: 18px;
+    -fx-background-radius: 15.0px;
+    -fx-font-size: 18.0px;
 }
 
 
 .my-ecuacion{
 	-fx-border-color: #000000;
-    -fx-border-width: 6px;
+    -fx-border-width: 6.0px;
     -fx-border-radius: 10.0px;
     -fx-text-fill: black;
     -fx-font-family: "Press Start 2P", sans-serif;
 	-fx-background-color:#D479F4;
-    -fx-background-radius: 15px;
-    -fx-font-size: 50px;
+    -fx-background-radius: 15.0px;
+    -fx-font-size: 30.0px;
+    -fx-min-width: 400px; 
+    -fx-min-height: 100px;
+    -fx-alignment: center;
 }
 
 .my-respuesta{
 	-fx-border-color: #000000;
-    -fx-border-width: 6px;
+    -fx-border-width: 6.0px;
     -fx-border-radius: 16.0px;
     -fx-text-fill: black;
     -fx-font-family: "Press Start 2P", sans-serif;
 	-fx-background-color:#4F92F6;
-    -fx-background-radius: 20px;
-    -fx-font-size: 35px;
+    -fx-background-radius: 20.0px;
+    -fx-font-size: 20.0px;
+    -fx-min-width: 200px; 
+    -fx-min-height: 100px;
+    -fx-alignment: center;
 }
 .my-texto{
     -fx-text-fill: black;
     -fx-font-family: "Press Start 2P", sans-serif;
-    -fx-font-size: 20px;
+    -fx-font-size: 20.0px;
 }

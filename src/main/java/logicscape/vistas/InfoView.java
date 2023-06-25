@@ -61,7 +61,7 @@ public class InfoView extends Application {
         stackPane.setAlignment(Pos.CENTER);
         //Texto de la info 
         Label label = new Label(" JUEGO CREADO POR:\n\n"
-        		+ "-LUIS FELIPE AYALA FERNÁNDEZ \n"
+        		+ "-LUIS FELIPE AYALA FERNANDEZ \n"
         		+ "-NICOLAS BELTRAN VARGAS \n"
         		+ "-SANTIAGO BETANCUR VILLEGAS \n"
         		+ "-NELSON ALONSO CAMACHO CAMACHO \n"
@@ -74,7 +74,7 @@ public class InfoView extends Application {
         infoContainer.getChildren().add(stackPane);
 
         // Creación del ImageView para la imagen de fondo
-        Image backgroundImage = new Image("file:src/main/resources/img/nivel_final.png");
+        Image backgroundImage = new Image(getClass().getResource("/img/nivel_final.png").toExternalForm());
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
         backgroundImageView.fitHeightProperty()
@@ -101,9 +101,7 @@ public class InfoView extends Application {
         
         //Accion boton volver
         backBtn.setOnAction(event -> {
-            JugarView jugarView = new JugarView();
-            JugarController jugarController = new JugarController(jugarView);
-            jugarView.start(primaryStage);
+            infoController.handleButtonClick(primaryStage);
         });
 
 
@@ -116,7 +114,7 @@ public class InfoView extends Application {
         Scene scene = new Scene(root, 1024, 628);
         Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
         // Agregar una hoja de estilos CSS
-        scene.getStylesheets().add("file:src/main/resources/css/application.css");
+        scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
         primaryStage.setTitle("Logic Scape");
         primaryStage.setScene(scene);

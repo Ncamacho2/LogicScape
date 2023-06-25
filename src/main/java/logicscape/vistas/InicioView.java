@@ -37,7 +37,7 @@ public class InicioView extends Application {
         buttonContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
 
         // Creación del ImageView para la imagen de fondo
-        Image backgroundImage = new Image("file:src/main/resources/img/nivel_final.png");
+        Image backgroundImage = new Image(getClass().getResource("/img/nivel_final.png").toExternalForm());
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
         backgroundImageView.fitHeightProperty()
@@ -57,15 +57,11 @@ public class InicioView extends Application {
         registroBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(2));
         
         inicioBtn.setOnAction(event -> {
-            LoginView loginView = new LoginView();
-            LoginController loginController = new LoginController(loginView);
-            loginView.start(primaryStage);
+            inicioController.handleButtonClick(inicioBtn.getText(), primaryStage);
         });
 
         registroBtn.setOnAction(event -> {
-        	RegistroView registroView = new RegistroView();
-            RegistroController registroController = new RegistroController(registroView);
-            registroView.start(primaryStage);
+        	inicioController.handleButtonClick(registroBtn.getText(), primaryStage);
         });
         // Agregar los botones al contenedor
         buttonContainer.getChildren().addAll(inicioBtn, registroBtn);
@@ -75,7 +71,7 @@ public class InicioView extends Application {
         Scene scene = new Scene(root, 1024, 628);
         Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
         // Agregar una hoja de estilos CSS
-        scene.getStylesheets().add("file:src/main/resources/css/application.css");
+        scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
         primaryStage.setTitle("Logic Scape");
         primaryStage.setScene(scene);

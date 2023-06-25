@@ -60,8 +60,8 @@ public class AutenticacionTest {
 
     @Test
     public void testAutenticarUsuario_UsuarioYPasswordCorrectos_AutenticacionExitosa() {
-        String nombreUsuario = "PEPITO";
-        String password = "hgjhgkhlkhjlkj";
+        String nombreUsuario = "nelson";
+        String password = "123";
         List<Usuario> usuarios = new ArrayList<>();
         Usuario usuario = new Usuario();
         usuario.setUsuario(nombreUsuario);

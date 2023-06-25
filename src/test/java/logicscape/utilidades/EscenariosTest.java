@@ -22,7 +22,7 @@ public class EscenariosTest {
         Integer resultado = 10;
         Integer escenarioId = 0;
         Integer nivelId = 0;
-        Integer usuarioId = 17;
+        Integer usuarioId = 53;
 
         escenarios = new Escenarios(opciones, pregunta, resultado, escenarioId, nivelId, usuarioId);
     }

@@ -12,14 +12,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import logicscape.controladores.FinalController;
+import logicscape.controladores.InfoController;
 
 public class FinalView extends Application {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 628;
-    private static final String BACKGROUND_IMAGE = "file:src/main/resources/img/nivel_final.png";
+    private static final String BACKGROUND_SUCCESS = "/img/registro.png";
+    private static final String BACKGROUND_FAIL = "/img/nivel_final.png";
     private static final String FONT_PATH = "/font/PressStart2P-Regular.ttf";
     private static final String MESSAGE_STYLE = "-fx-padding: 20px; -fx-border-color: black; -fx-border-width: 10px; -fx-border-radius: 30px; -fx-background-radius: 30px;";
-
+    private FinalController finalController;
     private boolean lograEscapar;
 
     public FinalView(boolean lograEscapar) {
@@ -36,7 +39,7 @@ public class FinalView extends Application {
         BorderPane root = new BorderPane();
 
         // Creación del ImageView para la imagen de fondo
-        Image backgroundImage = new Image(BACKGROUND_IMAGE);
+        Image backgroundImage = new Image(getClass().getResource(lograEscapar ? BACKGROUND_SUCCESS : BACKGROUND_FAIL).toExternalForm());
         ImageView backgroundImageView = new ImageView(backgroundImage);
         backgroundImageView.fitWidthProperty().bind(primaryStage.widthProperty());
         backgroundImageView.fitHeightProperty().bind(primaryStage.heightProperty());
@@ -44,7 +47,7 @@ public class FinalView extends Application {
 
         // Creación del contenedor para el mensaje
         StackPane messageContainer = new StackPane();
-        Label messageLabel = new Label(lograEscapar ? "¡Felicidades\nLograste esscapar!" : "Game Over\n Buen intento");
+        Label messageLabel = new Label(lograEscapar ? "¡Felicidades\nLograste escapar!" : "Game Over\n Buen intento");
         messageLabel.setFont(Font.loadFont(getClass().getResourceAsStream(FONT_PATH), 48));
         messageLabel.setTextFill(Color.WHITE);
         // Estilos del mensaje + condicional para cambiar el color de fondo segun el resultado
@@ -58,14 +61,21 @@ public class FinalView extends Application {
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 
         // Agregar una hoja de estilos CSS
-        scene.getStylesheets().add("file:src/main/resources/css/application.css");
+        scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
-        primaryStage.setTitle("Final View");
+        primaryStage.setTitle("Logic Scape");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    /**
+     * @param finalController the infoController to set
+     */
+    public void setFinalController(FinalController finalController) {
+        this.finalController = finalController;
+    }
+
+    void setStage(Stage primaryStag) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
