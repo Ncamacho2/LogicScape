@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"LogicScape","l":"logicscape"},{"m":"LogicScape","l":"logicscape.controladores"},{"m":"LogicScape","l":"logicscape.mapper"},{"m":"LogicScape","l":"logicscape.modelos"},{"m":"LogicScape","l":"logicscape.utilidades"},{"m":"LogicScape","l":"logicscape.vistas"}];updateSearchResults();

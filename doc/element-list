@@ -1,0 +1,7 @@
+module:LogicScape
+logicscape
+logicscape.controladores
+logicscape.mapper
+logicscape.modelos
+logicscape.utilidades
+logicscape.vistas
