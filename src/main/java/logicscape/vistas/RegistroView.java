@@ -18,6 +18,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.RegistroController;
 
+/**
+ * Clase que representa la vista del registro.
+ */
 public class RegistroView extends Application {
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 628;
@@ -101,7 +104,7 @@ public class RegistroView extends Application {
         });
 
         // Agregar los botones al contenedor
-        buttonContainer.getChildren().addAll( cancelarBtn, aceptarBtn);
+        buttonContainer.getChildren().addAll(cancelarBtn, aceptarBtn);
 
         // Establecer el fondo para el registro
         Image backgroundImage = new Image(getClass().getResource("/img/registro.png").toExternalForm());
