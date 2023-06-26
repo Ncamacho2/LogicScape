@@ -8,22 +8,22 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logicscape.controladores.InicioController;
-import logicscape.controladores.RegistroController;
-import logicscape.controladores.RespuestasController;
 import logicscape.controladores.RetoController;
 import logicscape.utilidades.Escenarios;
 
+/**
+ * Esta es una clase para la vista del Reto en la aplicación LogicScape.
+ * Esta vista permite al usuario interactuar con la interfaz del Reto.
+ */
 public class RetoView extends Application {
 
 	private static final int WIDTH = 1024;
@@ -40,19 +40,21 @@ public class RetoView extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		// ConfiguraciÃ³n de la ventana principal
+		// Configuración de la ventana principal
 		primaryStage.setWidth(WIDTH);
 		primaryStage.setHeight(HEIGHT);
-		// CreaciÃ³n del contenedor principal
+		
+		// Creación del contenedor principal
 		BorderPane root = new BorderPane();
-		// CreaciÃ³n del contenedor para los botones en la parte inferior
+		
+		// Creación del contenedor para los botones en la parte inferior
 		HBox buttonContainer = new HBox();
 		buttonContainer.setPadding(new Insets(20));
 		buttonContainer.setSpacing(10);
 		buttonContainer.setPrefHeight(HEIGHTBUTTON);
 		buttonContainer.setStyle("-fx-background-color: #F9ED65;"); // Color de fondo blanco
 
-		// CreaciÃ³n del contenedor para los campos de entrada
+		// Creación del contenedor para los campos de entrada
 		GridPane inputContainer = new GridPane();
 		inputContainer.setPadding(new Insets(85));
 		inputContainer.setVgap(20);
@@ -64,6 +66,7 @@ public class RetoView extends Application {
 		respuesta3Field = new TextField();
 		respuesta4Field = new TextField();
 
+		// Generar una pregunta para el desafío
 		Escenarios escenario = new Escenarios(new ArrayList<Integer>(), "", 0,
 				retoController.getUsuario().getEscenarioActual(), retoController.getUsuario().getNivelActual(),
 				retoController.getUsuario().getId());
@@ -81,6 +84,7 @@ public class RetoView extends Application {
 		respuesta3Label.getStyleClass().add("my-label");
 		respuesta4Label.getStyleClass().add("my-label");
 
+		// Añadir etiquetas al contenedor de entrada
 		inputContainer.add(ecuacionLabel, 0, 0);
 		ecuacionLabel.getStyleClass().add("my-ecuacion");
 		inputContainer.add(respuesta1Label, 1, 1);
@@ -103,15 +107,20 @@ public class RetoView extends Application {
 		loginBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(1));
 		inicioBtn.prefHeightProperty().bind(buttonContainer.heightProperty());
 		inicioBtn.prefWidthProperty().bind(primaryStage.widthProperty().divide(1));
+		
+		// Eventos al presionar los botones
 		loginBtn.setOnAction(event -> {
-
+			// Código para ejecutar cuando se presiona el botón de inicio de sesión
 		});
 
 		inicioBtn.setOnAction(event -> {
+			// Abrir la vista de inicio cuando se presiona el botón de inicio
 			InicioView inicioView = new InicioView();
 			InicioController inicioControler = new InicioController(inicioView);
 			inicioView.start(primaryStage);
 		});
+		
+		// Configurar la acción cuando se hace clic en cada botón de respuesta
 		respuesta1Label.setOnAction(event -> {
 			String respuestaStr = respuesta1Label.getText();
 			Integer respuesta = Integer.parseInt(respuestaStr);
@@ -146,6 +155,7 @@ public class RetoView extends Application {
 
 		Scene scene = new Scene(root, 800, 500);
 		Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);
+		
 		// Agregar una hoja de estilos CSS
 		scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
@@ -155,14 +165,22 @@ public class RetoView extends Application {
 	}
 
 	/**
-	 * @param retoController the retoController to set
+	 * Configurar el RetoController para esta vista.
+	 * @param retoController el RetoController a establecer
 	 */
 	public void setRetoController(RetoController retoController) {
 		this.retoController = retoController;
 	}
 
+	/**
+	 * Configura el escenario para esta vista. 
+	 * Este método lanza una excepción UnsupportedOperationException 
+	 * ya que no está implementado aún.
+	 * 
+	 * @param primaryStage el Stage a configurar
+	 */
 	void setStage(Stage primaryStage) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		throw new UnsupportedOperationException("Operación no soportada aún.");
 	}
 
 }

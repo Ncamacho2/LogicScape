@@ -60,14 +60,14 @@ public class RetoController {
 	}
 
 	/**
-	 * @return the usuario
+	 * @return el usuario
 	 */
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
 	/**
-	 * @param usuario the usuario to set
+	 * @param usuario definir el usuario
 	 */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
