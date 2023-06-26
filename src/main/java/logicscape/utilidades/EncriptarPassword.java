@@ -3,7 +3,6 @@ package logicscape.utilidades;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
 /**
  * 
  * Esta clase proporciona métodos para encriptar contraseñas utilizando el

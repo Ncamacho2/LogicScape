@@ -2,6 +2,8 @@ package logicscape.vistas;
 
 import java.util.ArrayList;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import logicscape.controladores.InicioController;
 import logicscape.controladores.RetoController;
 import logicscape.utilidades.Escenarios;
@@ -31,6 +34,7 @@ public class RetoView extends Application {
 	private Button loginBtn;
 	private Button inicioBtn;
 	private RetoController retoController;
+	private int contador = 30;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -53,7 +57,6 @@ public class RetoView extends Application {
 		inputContainer.setPadding(new Insets(85));
 		inputContainer.setVgap(20);
 		inputContainer.setAlignment(Pos.CENTER_RIGHT);
-
 
 		// Generar una pregunta para el desafío
 		Escenarios escenario = new Escenarios(new ArrayList<Integer>(), "", 0,
@@ -101,6 +104,7 @@ public class RetoView extends Application {
 		loginBtn.setOnAction(event -> {
 			// Código para ejecutar cuando se presiona el botón de inicio de sesión
 		});
+		Timeline timeline = new Timeline();
 
 		inicioBtn.setOnAction(event -> {
 			// Abrir la vista de inicio cuando se presiona el botón de inicio
@@ -111,21 +115,25 @@ public class RetoView extends Application {
 
 		// Configurar la acción cuando se hace clic en cada botón de respuesta
 		respuesta1Label.setOnAction(event -> {
+			timeline.stop();
 			String respuestaStr = respuesta1Label.getText();
 			Integer respuesta = Integer.parseInt(respuestaStr);
 			retoController.validarRespuesta(respuesta, escenario, primaryStage);
 		});
 		respuesta2Label.setOnAction(event -> {
+			timeline.stop();
 			String respuestaStr = respuesta2Label.getText();
 			Integer respuesta = Integer.parseInt(respuestaStr);
 			retoController.validarRespuesta(respuesta, escenario, primaryStage);
 		});
 		respuesta3Label.setOnAction(event -> {
+			timeline.stop();
 			String respuestaStr = respuesta3Label.getText();
 			Integer respuesta = Integer.parseInt(respuestaStr);
 			retoController.validarRespuesta(respuesta, escenario, primaryStage);
 		});
 		respuesta4Label.setOnAction(event -> {
+			timeline.stop();
 			String respuestaStr = respuesta4Label.getText();
 			Integer respuesta = Integer.parseInt(respuestaStr);
 			retoController.validarRespuesta(respuesta, escenario, primaryStage);
@@ -141,6 +149,22 @@ public class RetoView extends Application {
 
 		// Agregar los contenedores al contenedor principal
 		root.setCenter(inputContainer);
+		Label contadorLabel = new Label(String.valueOf(contador));
+		contadorLabel.getStyleClass().add("my-contador");
+		
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> {
+		    contador--;
+		    contadorLabel.setText(String.valueOf(contador));
+		    if (contador <= 0) {
+		        timeline.stop();
+		        // Llamar a la función del controlador cuando el contador llegue a cero
+		        retoController.funcionFinalizarTiempo(primaryStage);
+		    }
+		});
+		timeline.getKeyFrames().add(keyFrame);
+		timeline.play();
+		inputContainer.add(contadorLabel, 4, 4); 
 
 		Scene scene = new Scene(root, 800, 500);
 		Font.loadFont(getClass().getResourceAsStream("/font/PressStart2P-Regular.ttf"), 12);

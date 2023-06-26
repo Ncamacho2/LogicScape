@@ -71,3 +71,16 @@
     -fx-font-family: "Press Start 2P", sans-serif;
     -fx-font-size: 20.0px;
 }
+.my-contador{
+	-fx-border-color: #000000;
+    -fx-border-width: 6.0px;
+    -fx-border-radius: 10.0px;
+    -fx-text-fill: black;
+    -fx-font-family: "Press Start 2P", sans-serif;
+	-fx-background-color:#D479F4;
+    -fx-background-radius: 15.0px;
+    -fx-font-size: 30.0px;
+    -fx-min-width: 100px; 
+    -fx-min-height: 100px;
+    -fx-alignment: center;
+}

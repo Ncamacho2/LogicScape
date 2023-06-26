@@ -1,7 +1,5 @@
 package logicscape.controladores;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import logicscape.modelos.Usuario;
 import logicscape.vistas.InfoView;
@@ -37,7 +35,7 @@ public class InfoController {
 	 */
 	public void handleButtonClick(Stage primaryStage) {
 		JugarView jugarView = new JugarView();
-		JugarController jugarController = new JugarController(jugarView, usuario);
+		new JugarController(jugarView, usuario);
 		jugarView.start(primaryStage);
 	}
 }

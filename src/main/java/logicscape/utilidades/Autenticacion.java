@@ -95,5 +95,4 @@ public class Autenticacion {
 		this.usuarioActivo = usuarioActivo;
 	}
 
-	
 }

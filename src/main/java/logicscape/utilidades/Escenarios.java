@@ -7,7 +7,6 @@ import logicscape.mapper.UsuarioMapper;
 import logicscape.modelos.Usuario;
 
 /**
- * 
  * Esta clase representa un escenario en el juego Logicscape y contiene métodos
  * para generar preguntas y validar respuestas.
  */

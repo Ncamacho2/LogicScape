@@ -3,10 +3,10 @@ package logicscape.controladores;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import logicscape.utilidades.Autenticacion;
 import logicscape.vistas.InicioView;
 import logicscape.vistas.JugarView;
 import logicscape.vistas.LoginView;
-import logicscape.utilidades.Autenticacion;
 
 /**
  * Clase: LoginController Descripción: Esta clase es responsable de controlar
@@ -38,7 +38,7 @@ public class LoginController {
 		Autenticacion autenticacion = new Autenticacion();
 		if (autenticacion.autenticarUsuario(usuario, contrasenia)) {
 			JugarView jugarView = new JugarView();
-			JugarController jugarControler = new JugarController(jugarView, autenticacion.getUsuarioActivo());
+			new JugarController(jugarView, autenticacion.getUsuarioActivo());
 			jugarView.start(primaryStage);
 		} else {
 			mostrarMensaje("Usuario o contraseña incorrectos", AlertType.ERROR);
@@ -66,7 +66,7 @@ public class LoginController {
 	 */
 	public void handleCancelar(Stage primaryStage) {
 		InicioView inicioView = new InicioView();
-		InicioController inicioControler = new InicioController(inicioView);
+		new InicioController(inicioView);
 		inicioView.start(primaryStage);
 	}
 }

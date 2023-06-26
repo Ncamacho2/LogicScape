@@ -1,11 +1,11 @@
 package logicscape.controladores;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import java.util.ArrayList;
+
 import javafx.stage.Stage;
 import logicscape.modelos.Usuario;
+import logicscape.utilidades.Escenarios;
 import logicscape.vistas.FinalView;
-import logicscape.vistas.InfoView;
 import logicscape.vistas.JugarView;
 
 /**
@@ -36,7 +36,13 @@ public class FinalController {
 	 *
 	 * @param primaryStage El Stage principal de la aplicación.
 	 */
-	public void handleButtonClick(Stage primaryStage) {
-		
+	public void jugardeNuevo(Stage primaryStage) {
+		Escenarios escenario = new Escenarios(new ArrayList<Integer>(), "", 0, usuario.getEscenarioActual(),
+				usuario.getNivelActual(), usuario.getId());
+		usuario = escenario.reiniciarJuego(usuario.getId());
+		JugarView jugarView = new JugarView();
+		new JugarController(jugarView, usuario);
+		jugarView.start(primaryStage);
+
 	}
 }

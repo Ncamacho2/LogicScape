@@ -15,7 +15,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import logicscape.controladores.FinalController;
-import logicscape.controladores.JugarController;
 
 public class FinalView extends Application {
 	private static final int WIDTH = 1024;
@@ -75,10 +74,7 @@ public class FinalView extends Application {
 
 		// Metodos botones
 		jugarDeNuevoBtn.setOnAction(event -> {
-			JugarView jugarView = new JugarView();
-			JugarController controller = new JugarController(jugarView, null);
-
-			jugarView.start(primaryStage);
+			finalController.jugardeNuevo(primaryStage);
 		});
 
 		salirBtn.setOnAction(event -> {

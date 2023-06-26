@@ -5,8 +5,22 @@ import java.sql.SQLException;
 
 import logicscape.modelos.Usuario;
 
+/**
+ * Esta clase implementa la interfaz EntityMapper y se utiliza para mapear los
+ * resultados de una consulta de base de datos a un objeto de tipo Usuario.
+ * 
+ * @author Nelson Camacho
+ */
 public class UsuarioMapper implements EntityMapper<Usuario> {
-
+	/**
+	 * Mapea los resultados de un objeto ResultSet a un objeto de tipo Usuario.
+	 *
+	 * @param resultSet el objeto ResultSet que contiene los resultados de la
+	 *                  consulta.
+	 * @return un objeto de tipo Usuario con los datos mapeados desde el ResultSet.
+	 * @throws SQLException si ocurre algún error al acceder a los datos en el
+	 *                      ResultSet.
+	 */
 	@Override
 	public Usuario map(ResultSet resultSet) throws SQLException {
 		Usuario usuario = new Usuario();

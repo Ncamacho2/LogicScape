@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import logicscape.utilidades.EncriptarPassword;
 
 /**
+ * Representacion del Usuario.
+ *
  * @author ncamacho.
  *
  */
