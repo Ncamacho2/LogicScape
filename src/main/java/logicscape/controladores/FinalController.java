@@ -21,7 +21,7 @@ public class FinalController {
 	 * Crea una instancia del controlador de información con la vista y el usuario
 	 * proporcionados.
 	 *
-	 * @param infoView La vista de información asociada al controlador.
+	 * @param finalView La vista de información asociada al controlador.
 	 * @param usuario  El usuario asociado al controlador.
 	 */
 	public FinalController(FinalView finalView, Usuario usuario) {

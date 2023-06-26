@@ -6,7 +6,11 @@ import logicscape.vistas.FinalView;
 import logicscape.vistas.JugarView;
 import logicscape.vistas.NivelView;
 import logicscape.vistas.RetoView;
-
+/**
+ * Clase: NivelController Descripción: Esta clase es responsable de controlar
+ * las interacciones y eventos en la vista de nivel.
+ *
+ */
 public class NivelController {
 	private NivelView nivelView;
 	private Usuario usuario;
@@ -26,6 +30,12 @@ public class NivelController {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * Contructor de la clase.
+	 * @param nivelView vista
+	 * @param usuario usuario
+	 * @param tiempoMsgInicial tiempo de mensaje
+	 */
 	public NivelController(NivelView nivelView, Usuario usuario, Integer tiempoMsgInicial) {
 		this.nivelView = nivelView;
 		this.usuario = usuario;
@@ -37,7 +47,7 @@ public class NivelController {
 	 * Maneja el evento del un usuario.
 	 *
 	 * @param action       El nombre de usuario.
-	 * @param primaryStage
+	 * @param primaryStage la ventana principal.
 	 */
 	public void handleButtonClick(String action, Stage primaryStage) {
 		if (action.contentEquals("Iniciar")||action.contentEquals("Seguir")) {
@@ -59,18 +69,29 @@ public class NivelController {
 	}
 
 	/**
+	 * set el tiempo inicial.
+	 *
 	 * @param tiempoMsgInicial the tiempoMsgInicial to set
 	 */
 	public void setTiempoMsgInicial(Integer tiempoMsgInicial) {
 		this.tiempoMsgInicial = tiempoMsgInicial;
 	}
 
+	/**
+	 * Muestra la ventana de final del juego.
+	 *
+	 * @param primaryStage la ventana principal.
+	 */
 	public void mostrarGameOver(Stage primaryStage) {
 		FinalView finalView = new FinalView(false);
 		new FinalController(finalView, usuario);
 		finalView.start(primaryStage);
 	}
-
+	/**
+	 * Muestra la ventana de final del juego.
+	 *
+	 * @param primaryStage la ventana principal.
+	 */
 	public void mostrarGanador(Stage primaryStage) {
 		FinalView finalView = new FinalView(true);
 		new FinalController(finalView, usuario);

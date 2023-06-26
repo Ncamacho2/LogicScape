@@ -20,15 +20,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 
 public class Base {
+	/**
+	 * id
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
+	/**
+	 * visible.
+	 */
 	@JsonIgnore
 	protected Boolean visible = true;
+	/**
+	 * disponible.
+	 */
 	@JsonIgnore
 	protected Boolean disponible = true;
+	/**
+	 * ultimaActualizacion.
+	 */
 	@JsonIgnore
 	protected LocalDateTime ultimaActualizacion;
+	/**
+	 * fechaCreacion.
+	 */
 	@JsonIgnore
 	protected LocalDateTime fechaCreacion;
 
@@ -102,6 +117,11 @@ public class Base {
 		this.fechaCreacion = fechaCreacion;
 	}
 
+	/**
+	 * obtiene las columnas de la clase.
+	 *
+ 	 * @return las columnas.
+	 */
 	public List<String> getColumnas() {
         List<String> columnas = new ArrayList<>();
         Class<?> claseActual = this.getClass();
@@ -115,6 +135,11 @@ public class Base {
         return columnas;
     }
 
+	/**
+	 * Obtiene los valores de la clase.
+	 *
+	 * @return los valores.
+	 */
     public List<Object> getValores() {
         List<Object> valores = new ArrayList<>();
         Class<?> claseActual = this.getClass();

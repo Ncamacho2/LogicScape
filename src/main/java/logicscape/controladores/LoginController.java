@@ -31,8 +31,7 @@ public class LoginController {
 	 *
 	 * @param usuario      El nombre de usuario.
 	 * @param contrasenia  La contraseña.
-	 * @param primaryStage
-	 * @return true si el inicio de sesión es exitoso, false de lo contrario.
+	 * @param primaryStage La ventana principal.
 	 */
 	public void handleLogin(String usuario, String contrasenia, Stage primaryStage) {
 		Autenticacion autenticacion = new Autenticacion();
@@ -62,7 +61,7 @@ public class LoginController {
 	/**
 	 * Retorna a la ventana de inicio.
 	 * 
-	 * @param primaryStage
+	 * @param primaryStage La ventana principal.
 	 */
 	public void handleCancelar(Stage primaryStage) {
 		InicioView inicioView = new InicioView();

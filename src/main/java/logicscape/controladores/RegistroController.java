@@ -53,7 +53,7 @@ public class RegistroController {
 	 *
 	 * @param user         El nombre de usuario.
 	 * @param password     La contraseña.
-	 * @param primaryStage
+	 * @param primaryStage La ventana principal.
 	 */
 	public void handleRegistro(String user, String password, Stage primaryStage) {
 		Autenticacion autenticacion = new Autenticacion();
@@ -71,7 +71,7 @@ public class RegistroController {
 	/**
 	 * Retorna a la ventana de inicio.
 	 * 
-	 * @param primaryStage
+	 * @param primaryStage La ventana principal.
 	 */
 	public void handleCancelar(Stage primaryStage) {
 		InicioView inicioView = new InicioView();

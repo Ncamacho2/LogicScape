@@ -16,7 +16,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import logicscape.controladores.FinalController;
 
-public class FinalView extends Application {
+/**
+ * La clase FinalView representa la vista de la pantalla de final del
+ * juego.
+ */public class FinalView extends Application {
 	private static final int WIDTH = 1024;
 	private static final int HEIGHT = 628;
 	private static final String BACKGROUND_SUCCESS = "/img/registro.png";
